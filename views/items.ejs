@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Règles Werewolf Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+ </head>
+ <body>
+   <header class="reveal">
+     <h1>Items spéciaux<br>꧁Werewolf Online꧂</h1>
+   </header>
+  <main>
+    <section class="reveal">
+      <select id="menu" value={optnMenu} onChange="redirection()">
+        <option value="accueil">Accueil</option>
+        <option value="regles">Règles</option>
+        <option value="quetes">Quêtes</option>
+        <option value="recompenses">Récompenses</option>
+        <option value="events">Évènements</option>
+        <option value="items" selected>Items spéciaux</option>
+        <option value="questionnaire">Questionnaire</option>
+        <option value="search">Chercher quelqu'un</option>
+        <option value="infos">Informations</option>
+        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
+      </select>
+    </section>
+    <section id="item-spe" class="border reveal">
+      <h2>Items spéciaux?</h2>
+      <p>
+        Les items spéciaux sont cachés un peu partout dans le jeu.
+      </p>
+    </section>
+    <section id="item-tchat" class="border reveal">
+      <h2>Items cachés dans le tchat d'une partie</h2>
+      <p>
+        Écrivez dans le tchat lors d'une partie:<br>
+        1. "Hello Wolvesville"<br>
+        2. "I love wov"<br>
+        Pour recevoir des items.
+    </p>
+    <button id="copyButton" onclick="copyText('Hello Wolvesville')">Copier 1.</button>
+    <button id="copyButton" onclick="copyText('I love wov')">Copier 2.</button>
+     <br><br>
+    </section>
+    <section id="memory" class="border reveal">
+      <h2>Memory</h2>
+      <p>
+        Sur mobile:
+        <br>
+        Cliquez plusieurs fois (deux/trois fois) en bas de l'écran sur l'écran d'accueil.
+        <br>
+        Réalisez le mini-jeu (memory game)
+        <br>
+        Recevez les lunettes.
+      </p>
+    </section>
+    <section id="faq" class="border reveal">
+      <h2>Items caché FAQ</h2>
+      <p>
+        Cliquez sur le <span class="blueCircle">?</span><br>
+        Cliquez sur FAQ<br>
+        Affichez tous les textes<br>
+        Cliquez sur le texte rise qui s'est affiché (I know everything!)<br>
+        Faites le quizz<br>
+        Récupérez le chapeau avec l'ampoule
+      </p>
+    </section>
+    <section id="item-ordi" class="border reveal">
+      <h2>Sur ordi:</h2>
+      <p>
+        Connecter vous au jeu sur le site
+        <br>
+        Récupérez les ordis du premier plan
+      </p>
+      <p>
+        Accepter tous les cookies du site
+        <br>
+        Récupérez le premier plan le loup qui mange un cookie
+      </p>
+      <p>
+        Activez les notifications du site
+        <br>
+        Récupérez la tombe qui ressemble à un pc
+      </p>
+      <p>
+        Jouez une partie sur le site
+        <br>
+        Récupérez le masque noir
+      </p>
+      <p>
+        Dites: "I am playing on Wolvesville web" dans une partie
+        <br>
+        Récupérez le chapeau en forme de boite rose
+      </p>
+      <button id="copyButton" onclick="copyText('I am playing on Wolvesville web')">Copier</button>
+      <br><br>
+    </section>
+    <section class="return reveal">
+      <a href="#">
+        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
+      </a>
+    </section>
+  </main>
+   <footer class="reveal">
+     <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
+       <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
+     </a>
+     <br>
+     <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
+       <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
+     </a>
+   </footer>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

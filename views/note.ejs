@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Note du questionnaire Werewolf Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+</head>
+
+<body>
+  <header class="reveal">
+    <h1>Note du questionnaire<br>꧁Werewolf Online꧂</h1>
+  </header>
+  <main>
+    <section class="reveal">
+      <select id="menu" value={optnMenu} onChange="redirection()">
+        <option value="accueil">Accueil</option>
+        <option value="regles">Règles</option>
+        <option value="quetes">Quêtes</option>
+        <option value="recompenses">Récompenses</option>
+        <option value="events">Évènements</option>
+        <option value="items">Items spéciaux</option>
+        <option value="questionnaire" selected>Questionnaire</option>
+        <option value="search">Chercher quelqu'un</option>
+        <option value="infos">Informations</option>
+        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
+      </select>
+    </section>
+    <section class="border reveal">
+      <h1>Note</h1>
+      <p>
+        Bien joué <%= pseudo %> !
+        <br>
+        Vous avez eu : <%= correctAnswers %>/15
+      </p>
+      <p>Nous ne donnons pas les réponses bonnes/mauvaises pour que ce soit plus dur pour vous. A vous de relever le défi ! (Vous avez un total de 3 essaies)</p>
+    </section>
+    <section class="return reveal">
+      <a href="#">
+        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
+      </a>
+    </section>
+  </main>
+  <footer class="reveal">
+    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
+      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
+    </a>
+    <br>
+    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
+      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
+    </a>
+  </footer>
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>

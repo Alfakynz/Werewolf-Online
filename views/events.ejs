@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Événements Werewolf Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+</head>
+
+<body>
+  <header class="reveal">
+    <h1>
+      Événements du clan<br>꧁Werewolf Online꧂
+    </h1>
+  </header>
+  <main>
+    <section class="reveal">
+      <select id="menu" value={optnMenu} onChange="redirection()">
+        <option value="accueil">Accueil</option>
+        <option value="regles">Règles</option>
+        <option value="quetes">Quêtes</option>
+        <option value="recompenses">Récompenses</option>
+        <option value="events" selected>Évènements</option>
+        <option value="items">Items spéciaux</option>
+        <option value="questionnaire">Questionnaire</option>
+        <option value="search">Chercher quelqu'un</option>
+        <option value="infos">Informations</option>
+        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
+      </select>
+    </section>
+    <section id="event" class="border reveal">
+      <h2>Évènements?</h2>
+      <p>
+        Les évènements sont fait pendant les quêtes ou hors-quêtes. Ils permettent de gagner des récompenses
+        supplémentaires (souvent des <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> ou des quêtes <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> gratuites qui seront
+        données par Soline ou les sous-chefs.
+        <br>
+        Les évènements permettent de mettre les membres du clan en compétition tout en s'amusant.
+        <br>
+        Les événements actuel ont une bordure jaune.
+        <br>
+        Les événements permanent ont une bordure rouge.
+        <br>
+        Le prochain évènement sera avec une bordure bleu.
+      </p>
+    </section>
+    <section id="Party Bouquet" class="event reveal">
+      <h2>
+        <img class="b-cpl" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/bqt.png?v=1709046895691">
+        Party Bouquet
+        <img class="b-cpl" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/bqt.png?v=1709046895691">
+      </h2>
+      <p>
+        Chaque dernier vendredi du mois, la cheffe organise une party bouquet entre les membres du clan.
+        C’est une partie grind ou vous êtes obligé de tous donner 5 <img class="or" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/bqt.png?v=1709046895691">, vous gagnerez donc tous 75 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> Vous trouverez des <img class="or" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/bqt.png?v=1709046895691"> : dans le battle pass, dans les récompenses quotidiennes et vous pouvez même les acheter dans l’inventaire pour 250 <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> Une annonce sera faites 1 semaine avant l’événement mais vous pouvez déjà économiser si ça vous intéresse.
+      </p>
+    </section>
+    <section id="chasse-xp-month" class="event reveal">
+      <h2>Chasse à l'xp mensuel</h2>
+      <p>
+        Cet évènement se déroule tout les mois, il faut faire le plus d'xp en une partie pour monter dans le classement. Pour prouver il faut prendre une capture et l'envoyer sur discord.
+      </p>
+    </section>
+    <section id="1vs1" class="border reveal">
+      <h2>1 VS 1</h2>
+      <p>
+        Cet évènement se déroule quand on veut sur une durée de deux ou trois jours. Le chef et/ou sous chefs forment les binômes. Avec votre adversaire, vous pariez une somme de <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">, celui qui fait moins d'xp que son adversaire doit donner le nombre de <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> pariées à son adversaire.
+      </p>
+    </section>
+    <section id="mini-event" class="border reveal">
+      <h2>Mini évènement</h2>
+      <p>
+        Cet évènement peut commencer n'importe quand. Il peut se trouver n'importe où dans le clan (bilan général,
+        messages épinglés, annonces, ...). Il y a 5 vainqueurs, le premier gagnera 5 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">, le deuxième 4, le troisième 3, le quatrième 2 et le cinquième 1 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+      </p>
+    </section>
+    <section id="doublePeine" class="border reveal">
+      <h2>
+        <img class="b-cpl" src="https://static.wikia.nocookie.net/werewolf-online/images/8/8c/Cupid_select_lovers_sticker.png">
+        Double peine
+        <img class="b-cpl" src="https://static.wikia.nocookie.net/werewolf-online/images/8/8c/Cupid_select_lovers_sticker.png">
+      </h2>
+      <p>
+        Dans cet évènement, il y a plusieurs équipes de 2 personnes. Les 2 premiers couples ayant le plus d'xp dans la quête gagneront 50 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+      </p>
+    </section>
+    <section id="vivi-vs-ww" class="border reveal">
+      <h2>
+        <img class="b-vivi" src="https://static.wikia.nocookie.net/werewolf-online/images/5/58/Villager.png">
+        Villageois VS Loup-garou
+        <img class="b-lg" src="https://static.wikia.nocookie.net/werewolf-online/images/f/f5/Werewolf.png">
+      </h2>
+      <p>
+        Dans cet évènement, il y a deux équipes, les villageois et les loups-garou. L'équipe ayant le plus d'xp gagne soit des <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> soit une quête <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> gratuite.
+      </p>
+    </section>
+    <section id="weekRose" class="border reveal">
+      <h2>
+        <img class="b-roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+        Week-end roses
+        <img class="b-roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+      </h2>
+      <p>
+        Cet évènement permet de gagner 5 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> tous les niveaux que l'on passe pendant l'évènement souvent d'une durée de 2 jours.
+      </p>
+    </section>
+    <section id="chasse-xp" class="border reveal">
+      <h2>Chasse à l'xp</h2>
+      <p>
+        Cet évènement se déroule lors d'une quête, il faut faire le plus d'xp en une partie pour gagner. Pour prouver il faut prendre une capture et l'envoyer sur discord.
+      </p>
+    </section>
+    <section class="return reveal">
+      <a href="#">
+        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
+      </a>
+    </section>
+  </main>
+  <footer class="reveal">
+    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
+      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
+    </a>
+    <br>
+    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
+      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
+    </a>
+  </footer>
+  <script src="scripts/script.js"></script>
+
+</body>
+
+</html>
