@@ -1,46 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>Questionnaire bonus Werewolf Online</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Questionnaire bonus" }) %>
 </head>
 
 <body>
-  <header class="reveal">
-    <h1>Questionnaire bonus<br>꧁Werewolf Online꧂</h1>
-  </header>
+  <%- include('partials/header', { title: "Questionnaire bonus" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil">Accueil</option>
-        <option value="regles">Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses">Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire" selected>Questionnaire</option>
-        <option value="search">Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'questionnaire' }) %>
     <section class="border reveal">
-      <h2>Questionnaire?</h2>
+      <h2>Questionnaire ?</h2>
       <p>Le questionnaire permet d'avoir un petit cadeau si vous répondez bon à toutes les réponses.
-        <br>
+        <br />
         Vous pouvez récupérer le cadeau qu'une seule fois et faire le questionnaire 3 fois.
-        <br>
+        <br />
         Les participants doivent être dans le clan pour répondre au questionnaire.
-        <br>
+        <br />
         Si vous avez des incompréhensions, demandez dans le tchat du clan ou demandez à Valtintin/Firelack en privé.
-        <br>
+        <br />
         Pour la question sur le classement: mettez le classement le plus proche car on peut être monté ou descendu dans le classement.
-        <br>
+        <br />
         Ne quittez pas la page du questionnaire au risque de perdre vos réponses et de devoir recommencer du début.
       </p>
     </section>
@@ -52,311 +32,309 @@
     <!-- début du <form> -->
     <form id="myForm" action="/questionnaire" method="post">
       <section class="border left reveal">
-        <h3>Question 1 : Comment s'appelle la cheffe?</h3>
+        <h3>Question 1 : Comment s'appelle la cheffe ?</h3>
         <label>
-          <input type="radio" name="question1" value="Soline"> Soline
+          <input type="radio" name="question1" value="Soline" /> Soline
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question1" value="Staline"> Staline
+          <input type="radio" name="question1" value="Staline" /> Staline
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question1" value="Solène"> Solène
+          <input type="radio" name="question1" value="Solène" /> Solène
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 2 : Combien de personnes peuvent aller dans un clan au maximum?
-        </h3>
+        <h3>Question 2 : Combien de personnes peuvent aller dans un clan au maximum ?</h3>
         <label>
-          <input type="radio" name="question2" value="25"> 25
+          <input type="radio" name="question2" value="25" /> 25
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question2" value="50"> 50
+          <input type="radio" name="question2" value="50" /> 50
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question2" value="100"> 100
+          <input type="radio" name="question2" value="100" /> 100
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 3 : Combien de personnes peuvent faire une quête?</h3>
+        <h3>Question 3 : Combien de personnes peuvent faire une quête ?</h3>
         <label>
-          <input type="radio" name="question3" value="5 min"> 5 minimum
+          <input type="radio" name="question3" value="5 min" /> 5 minimum
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question3" value="20 max"> 20 maximum
+          <input type="radio" name="question3" value="20 max" /> 20 maximum
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question3" value="Autant que l'on veut"> Autant que l'on veut
+          <input type="radio" name="question3" value="Autant que l'on veut" /> Autant que l'on veut
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question3" value="Tout le clan"> Tout le clan
+          <input type="radio" name="question3" value="Tout le clan" /> Tout le clan
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
         <h3>Question 4: Comment avoir des quêtes or gratuite ?</h3>
         <label>
-          <input type="radio" name="question4" value="8000xp"> en faisant 8 000 xp
+          <input type="radio" name="question4" value="8000xp" /> en faisant 8 000 xp
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question4" value="1er"> en étant premier de la quête 
+          <input type="radio" name="question4" value="1er" /> en étant premier de la quête 
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question4" value="20000xp"> en faisant 20 000xp par mois
+          <input type="radio" name="question4" value="20000xp" /> en faisant 20 000xp par mois
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question4" value="aucune"> il n'y a pas de quête or gratuite 
+          <input type="radio" name="question4" value="aucune" /> il n'y a pas de quête or gratuite 
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 5: Quel est le classement du clan Werewolf Online dans le nombre de quêtes des clans français ? (mettez la plus proche des propositions)
-        </h3>
+        <h3>Question 5: Quel est le classement du clan Werewolf Online dans le nombre de quêtes des clans français ? (mettez la plus proche des propositions)</h3>
         <label>
-          <input type="radio" name="question5" value="1er"> 1er
+          <input type="radio" name="question5" value="1er" /> 1er
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question5" value="5ème"> 5ème
+          <input type="radio" name="question5" value="5ème" /> 5ème
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question5" value="10ème"> 10ème
+          <input type="radio" name="question5" value="10ème" /> 10ème
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question5" value="15ème"> 15ème
+          <input type="radio" name="question5" value="15ème" /> 15ème
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question5" value="20ème"> 20ème
+          <input type="radio" name="question5" value="20ème" /> 20ème
         </label>
-        <br>
+        <br />
         <label>
           <input type="radio" name="question5" value="Non classé"> Non classé
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 6: Combien coûte une quête or?</h3>
+        <h3>Question 6: Combien coûte une quête or ?</h3>
         <label>
-          <input type="radio" name="question6" value="200 or"> 200 or
+          <input type="radio" name="question6" value="200 or" /> 200 or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question6" value="300 or"> 300 or
+          <input type="radio" name="question6" value="300 or" /> 300 or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question6" value="400 or"> 400 or
+          <input type="radio" name="question6" value="400 or" /> 400 or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question6" value="500 or"> 500 or
+          <input type="radio" name="question6" value="500 or" /> 500 or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question6" value="600 or"> 600 or
+          <input type="radio" name="question6" value="600 or" /> 600 or
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 7: Combien coûte une quête gemme?</h3>
+        <h3>Question 7: Combien coûte une quête gemme ?</h3>
         <label>
-          <input type="radio" name="question7" value="80 gemmes"> 80 gemmes
+          <input type="radio" name="question7" value="80 gemmes" /> 80 gemmes
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question7" value="100 gemmes"> 100 gemmes
+          <input type="radio" name="question7" value="100 gemmes" /> 100 gemmes
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question7" value="120 gemmes"> 120 gemmes
+          <input type="radio" name="question7" value="120 gemmes" /> 120 gemmes
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question7" value="140 gemmes"> 140 gemmes
+          <input type="radio" name="question7" value="140 gemmes" /> 140 gemmes
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question7" value="160 gemmes"> 160 gemmes
+          <input type="radio" name="question7" value="160 gemmes" /> 160 gemmes
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 8: Quel est le pays du clan?</h3>
+        <h3>Question 8: Quel est le pays du clan ?</h3>
         <label>
-          <input type="radio" name="question8" value="Anglais"> Angleterre
+          <input type="radio" name="question8" value="Anglais" /> Angleterre
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question8" value="Français"> France
+          <input type="radio" name="question8" value="Français" /> France
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question8" value="Canada"> Canada
+          <input type="radio" name="question8" value="Canada" /> Canada
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question8" value="Suisse"> Suisse </label>
-        <br><br>
+          <input type="radio" name="question8" value="Suisse" /> Suisse </label>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 9: Qui a créé le clan?
-        </h3>
+        <h3>Question 9: Qui a créé le clan ?</h3>
         <label>
-          <input type="radio" name="question9" value="Soline"> Soline
+          <input type="radio" name="question9" value="Soline" /> Soline
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question9" value="NgloKante"> NgloKante
+          <input type="radio" name="question9" value="NgloKante" /> NgloKante
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question9" value="Platypus"> Platypus
+          <input type="radio" name="question9" value="Platypus" /> Platypus
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 10: Quel est le niveau maximum que l'on peut atteindre dans le jeu?</h3>
+        <h3>Question 10: Quel est le niveau maximum que l'on peut atteindre dans le jeu ?</h3>
         <label>
-          <input type="radio" name="question10" value="1000"> 1000
+          <input type="radio" name="question10" value="1000" /> 1000
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question10" value="10000"> 10000
+          <input type="radio" name="question10" value="10000" /> 10000
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question10" value="Pas de limite"> pas de limite
+          <input type="radio" name="question10" value="Pas de limite" /> pas de limite
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 11: Quelle est l'aura du rôle pilleur de tombe?</h3>
+        <h3>Question 11: Quelle est l'aura du rôle pilleur de tombe ?</h3>
         <label>
-          <input type="radio" name="question11" value="claire"> claire
+          <input type="radio" name="question11" value="claire" /> claire
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question11" value="inconnue"> inconnue
+          <input type="radio" name="question11" value="inconnue" /> inconnue
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question11" value="obscure"> obscure
+          <input type="radio" name="question11" value="obscure" /> obscure
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 12: Quels rôles peuvent être ajouté une seule fois en partie personnalisée?</h3>
+        <h3>Question 12: Quels rôles peuvent être ajouté une seule fois en partie personnalisée ?</h3>
         <label>
-          <input type="radio" name="question12" value="juste le président"> juste le président
+          <input type="radio" name="question12" value="juste le président" /> juste le président
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question12" value="cupidon, sorcière et le gourou"> cupidon, sorcière et le gourou
+          <input type="radio" name="question12" value="cupidon, sorcière et le gourou" /> cupidon, sorcière et le gourou
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question12" value="geolier, cupidon, gourou et président"> geolier, cupidon, gourou et président
+          <input type="radio" name="question12" value="geolier, cupidon, gourou et président" /> geolier, cupidon, gourou et président
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question12" value="geolier, tireur, gourou et corrupteur"> geolier, tireur, gourou et corrupteur
+          <input type="radio" name="question12" value="geolier, tireur, gourou et corrupteur" /> geolier, tireur, gourou et corrupteur
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question12" value="président et geolier"> président et geolier
+          <input type="radio" name="question12" value="président et geolier" /> président et geolier
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 13: Où peut on avoir des gemmes?</h3>
+        <h3>Question 13: Où peut on avoir des gemmes ?</h3>
         <label>
-          <input type="radio" name="question13" value="juste en payant"> juste en payant
+          <input type="radio" name="question13" value="juste en payant" /> juste en payant
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question13" value="en payant et dans le battle pass"> en payant et dans le battle pass
+          <input type="radio" name="question13" value="en payant et dans le battle pass" /> en payant et dans le battle pass
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question13" value="en payant, dans le battle pass et dans les coffres de niveau"> payer, battle pass et coffres de niveau
+          <input type="radio" name="question13" value="en payant, dans le battle pass et dans les coffres de niveau" /> payer, battle pass et coffres de niveau
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question13" value="en payant et dans les coffres de niveau"> en payant et dans les coffres de niveau
+          <input type="radio" name="question13" value="en payant et dans les coffres de niveau" /> en payant et dans les coffres de niveau
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 14: Quelle affirmation est fausse?</h3>
+        <h3>Question 14: Quelle affirmation est fausse ?</h3>
         <p class="p-question14">L'or peut se trouver dans:</p>
         <label>
-          <input type="radio" name="question14" value="la roue de l'or"> la roue de l'or
+          <input type="radio" name="question14" value="la roue de l'or" /> la roue de l'or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question14" value="le battle pass"> le battle pass
+          <input type="radio" name="question14" value="le battle pass" /> le battle pass
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question14" value="les défis journaliers"> les défis journaliers
+          <input type="radio" name="question14" value="les défis journaliers" /> les défis journaliers
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question14" value="les coffres"> les coffres
+          <input type="radio" name="question14" value="les coffres" /> les coffres
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
-        <h3>Question 15: À partir de combien de pièce de fidélité il n'y a plus de pubs entre les parties?
-        </h3>
+        <h3>Question 15: À partir de combien de pièce de fidélité il n'y a plus de pubs entre les parties ?</h3>
         <label>
-          <input type="radio" name="question15" value="1 pièce de fidélité"> 1 pièce de fidélité
+          <input type="radio" name="question15" value="1 pièce de fidélité" /> 1 pièce de fidélité
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question15" value="3 pièces de fidélité"> 3 pièces de fidélité
+          <input type="radio" name="question15" value="3 pièces de fidélité" /> 3 pièces de fidélité
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question15" value="5 pièces de fidélité"> 5 pièces de fidélité
+          <input type="radio" name="question15" value="5 pièces de fidélité" /> 5 pièces de fidélité
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="question15" value="10 pièces de fidélité"> 10 pièces de fidélité
+          <input type="radio" name="question15" value="10 pièces de fidélité" /> 10 pièces de fidélité
         </label>
-        <br><br>
+        <br /><br />
       </section>
-      <!--section class="border reveal">
+      <section class="border reveal">
         <h3>Votre pseudo</h3>
-        <p>(complet et sans faute) pour savoir à qui donner les récompenses!</p>
+        <p>Complet et sans faute pour savoir à qui donner les récompenses !</p>
         <label>
-          <input id="pseudo" type="text" name="pseudo" placeholder="Votre pseudo" required>
+          <input id="pseudo" type="text" name="pseudo" placeholder="Votre pseudo" required />
         </label>
-        <br><br>
-      </section-->
+        <br /><br />
+      </section>
       <!-- Ajoutez d'autres questions ici -->
       <section class="border reveal">
         <h2>Envoyer les réponses</h2>
-        <!--button class="button" type="submit">Envoyer</button-->
-        <button class="button" onclick="copyTextForm(event)">Copier les réponses</button>
+        <button type="submit">Envoyer</button>
+        <button onclick="copyTextForm(event)">Copier les réponses</button>
         <p>
           Copiez les réponses pour les envoyer via Wolvesville à Valtintin ou Firelack et garder les traces de vos anciennes réponses si vous refaites le questionaire.
-          <!--<br>
-          Si vous avez eu les bonnes réponses, attendez 24h le temps que Firelack ou Valtintin analyse vos réponses, ils vous enverront un message privé pour la confirmation puis vous donneront 10 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"> si toute vos réponses sont correctes !-->
+          <br />
+          Si vous avez eu les bonnes réponses, attendez 24h le temps que Firelack ou Valtintin analyse vos réponses, ils vous enverront un message privé pour la confirmation puis vous donneront 10
+          <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+          si toute vos réponses sont correctes !
         </p>
       </section>
     </form>
@@ -365,37 +343,25 @@
       <h2>Participants pour le moment</h2>
       <div class="container">
         <div>
-          Soline: 12/15, 12/15<br>
-          olive_du_club: 14/15<br>
-          <b>Platypus: 14/15, 15/15</b><br>
-          Amantine: 10/15, 12/15<br>
-          loanebubble: 8/15<br>
-          SOAPssn_CaN: 9/15
+          Soline : 12/15, 12/15<br />
+          olive_du_club : 14/15<br />
+          <b>🏆 Platypus : 14/15, 15/15 🏆</b><br />
+          Amantine : 10/15, 12/15<br />
+          loanebubble : 8/15<br />
+          SOAPssn_CaN : 9/15
         </div>
         <div>
-          <b>JOKER_P5R: 13/15, 13/15, 15/15</b><br>
-          Mbbouille: 10/15, 11/15, 11/15<br>
-          Eponeunyne: 9/15, 11/15<br>
+          <b>🏆 JOKER_P5R : 13/15, 13/15, 15/15 🏆</b><br />
+          Mbbouille : 10/15, 11/15, 11/15<br />
+          Eponeunyne : 9/15, 11/15<br />
           PAWELAG7 : 11/15
         </div>
       </div>
-      <br>
+      <br />
     </section>
-    <section class="return reveal">
-      <a href="#">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
   <script src="scripts/form.js"></script>
 </body>

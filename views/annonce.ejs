@@ -1,38 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Copier l'annonce de la quête Werewolf Online</title>
-  <meta name="description"
-    content="Site web du clan Werewolf Online. Le site explique les règles, les quêtes et les évènements." />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Copier l'annonce de la quête" }) %>
 </head>
 
 <body>
-  <header id="content" class="reveal">
-    <h1>
-      Copier l'annonce de la quête<br>꧁Werewolf Online꧂
-    </h1>
-  </header>
+  <%- include('partials/header', { title: "Copier l'annonce de la quête" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil">Accueil</option>
-        <option value="regles">Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses">Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire">Questionnaire</option>
-        <option value="search">Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <option value="quest-copy" selected>Copier l'annonce de la quête</option>
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'copy-annonce' }) %>
     <section class="border reveal">
       <h2>Copier l'annonce de la quête</h2>
       <p>
@@ -44,76 +20,62 @@
       <section class="border left reveal">
         <h2>Numéro de la quête</h2>
         <label>
-          <input type="radio" name="numberQuest" value="1"> Quête n°1
+          <input type="radio" name="numberQuest" value="1" /> Quête n°1
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="numberQuest" value="2"> Quête n°2
+          <input type="radio" name="numberQuest" value="2" /> Quête n°2
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="numberQuest" value="3"> Quête n°3
+          <input type="radio" name="numberQuest" value="3" /> Quête n°3
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="numberQuest" value="4"> Quête n°4
+          <input type="radio" name="numberQuest" value="4" /> Quête n°4
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="numberQuest" value="5"> Quête n°5
+          <input type="radio" name="numberQuest" value="5" /> Quête n°5
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
         <h2>Type de la quête</h2>
         <label>
-          <input type="radio" name="typeQuest" value="400 or"> Quête or
+          <input type="radio" name="typeQuest" value="400 or" /> Quête or
         </label>
-        <br>
+        <br />
         <label>
-          <input type="radio" name="typeQuest" value="80 gemmes"> Quête gemme
+          <input type="radio" name="typeQuest" value="80 gemmes" /> Quête gemme
         </label>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border left reveal">
         <h2>Dates de la quête</h2>
         <div class="display-flex">
           <input id="date" type="date">
         </div>
-        <br><br>
+        <br /><br />
       </section>
       <section class="border reveal">
         <section>
-          <button type="button" class="button" onclick="copyAnnonce()">Copier l'annonce</button>
+          <button type="button" onclick="copyAnnonce()">Copier l'annonce</button>
         </section>
         <section>
-          <button type="button" class="button" onclick="copyQuestGold(<%= JSON.stringify(players) %>)">Quête or gratuites</button>
+          <button type="button" onclick="copyQuestGold(<%= JSON.stringify(players) %>)">Quête or gratuites</button>
         </section>
         <section>
-          <button type="button" class="button" onclick="copyQuestGem(<%= JSON.stringify(players) %>)">Quête gemmes gratuites</button>
-          <br><br>
+          <button type="button" onclick="copyQuestGem(<%= JSON.stringify(players) %>)">Quête gemmes gratuites</button>
+          <br /><br />
         </section>
       </section>
     </form>
     <!-- Fin du form -->
-    <section class="return reveal">
-      <a href="#">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
-    <section class="reveal"></section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
-  <script src="scripts/quete.js"></script>
   <script>
     function copyQuestGold(players) {
       // Trie les joueurs en fonction du nombre de quêtes dans l'ordre décroissant

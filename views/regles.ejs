@@ -1,58 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="utf-8">
-  <title>Règles Werewolf Online</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Règles" }) %>
 </head>
 
 <body>
-  <header class="reveal">
-    <h1>Règles du clan<br>꧁Werewolf Online꧂</h1>
-  </header>
+  <%- include('partials/header', { title: "Règles du clan" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil">Accueil</option>
-        <option value="regles" selected>Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses">Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire">Questionnaire</option>
-        <option value="search">Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'regles' }) %>
     <section id="absence" class="border reveal">
       <h2>Absence</h2>
       <p>
         Expulsion au bout d'une semaine de non connexion.
-        <br>
+        <br />
         Oubliez pas de prévenir en cas d'absences. Envoyez un message privé a la chef de préférence pour être sûr que le message sera vu.
-        <br>
+        <br />
         Aucun xp à faire par semaine mais si trop d'inactivité on peut se permettre de vous enlever du clan.
       </p>
     </section>
     <section class="border reveal">
       <h2>Ban définitif</h2>
       <p>
-        On ban def les trollers, les homophobes et tous les comportements inapproprié (anti-jeu, team-up,
-        injure, random...) même si il n’y a pas de membre du clan dans la partie
+        On ban définitivement les trollers, les homophobes et tous les comportements inappropriés (anti-jeu, team-up, injure, random...) même si il n’y a pas de membre du clan dans la partie.
       </p>
     </section>
     <section class="border reveal">
       <h2>Grind</h2>
       <p>
-        Le Grind est autorisé<br>
-        Chaque soir des parties grind seront ouverte par la cheffe ou vous serez prioritaire par rapport aux
-        autres
-        <br><br>
+        Le grind est autorisé.
+        <br />
+        Chaque soir des parties grind seront ouverte par la cheffe ou vous serez prioritaire par rapport aux autres.
+        <br /><br />
         Pour avoir des explications sur le grind : <a href="/informations">cliquez ici</a>.
       </p>
     </section>
@@ -62,12 +41,12 @@
         Vu qu'on est un clan qui parle beaucoup, il est possible que vous soyez dérangé par les messages.
       </p>
       <p>
-        Pour enlever les notifications du tchat, il faut:
-        <br>
+        Pour enlever les notifications du tchat, il faut :
+        <br />
         Cliquez sur le blason du clan
-        <br>
+        <br />
         Cliquez sur l'onglet réglages
-        <br>
+        <br />
         Décochez l'option "Tchat"
       </p>
       <p>
@@ -75,38 +54,28 @@
       </p>
     </section>
     <section id="idee" class="border reveal">
-      <h2>Questions/idées</h2>
-      <p>Si vous avez des questions ou des idées à nous faire parvenir, contactez nous sur discord ou par message privé voir même dans le tchat du clan.</p>
+      <h2>Questions / idées</h2>
+      <p>
+        Si vous avez des questions ou des idées à nous faire parvenir, contactez nous sur discord ou par message privé voir même dans le tchat du clan.
+      </p>
     </section>
     <section id="warning" class="border reveal">
       <h2>Attention</h2>
       <p>
-        Toutes les informations auparavant sont susceptible de changer d'une semaine à l'autre, pour être sûr d'avoir les bonnes informations:
-        <br>
+        Toutes les informations auparavant sont susceptible de changer d'une semaine à l'autre, pour être sûr d'avoir les bonnes informations :
+        <br />
         Surveillez les messages et annonces du clan.
-        <br>
+        <br />
         Regardez les informations dans la description du clan et dans les messages épinglés dans le tchat du clan.
       </p>
     </section>
     <section class="reveal">
       <h2>Bonne Chasse !!</h2>
-      <img class="loup1" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/loup.png?v=1709046889471">
+      <img class="loup1" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/loup.png?v=1709046889471" />
     </section>
-    <section class="return reveal">
-      <a href="#">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
 </body>
 

@@ -2,9 +2,10 @@ function start() {
 
   const { Client, GatewayIntentBits } = require("discord.js");
   const axios = require('axios');
+  //const { ReadableStream } = ('web-streams-polyfill');  
 
-  const accessToken = process.env['API.FIRE']
-  const botKey = process.env['BOT_KEY']
+  const accessToken = process.env['APIFIRE'];
+  const botKey = process.env['BOT_KEY'];
 
   const client = new Client({
     intents: [
@@ -21,7 +22,6 @@ function start() {
     'Accept': 'application/json',
     'Authorization': `Bot ${accessToken}` // Headers de l'api
   }
-
 
 
   client.on("ready", () => {
@@ -113,6 +113,7 @@ function start() {
         const slotNumber = contentArray.length > 1 ? contentArray[1] : null;
 
         // Déclarer resp en dehors de la portée de la deuxième requête Axios
+        let avatarUrl;
         let resp;
 
         axios.get(`https://api.wolvesville.com/players/search?username=${profilName}`, {
@@ -573,7 +574,7 @@ function start() {
         });
     }
 
-    // Annonce du clan werewolf onlie
+    // Annonce du clan werewolf online
     if (message.content.toLowerCase().startsWith("annonce")) {
       axios.get("https://api.wolvesville.com/clans/28f85d51-37b1-4fc6-a938-47656353363c/announcements", {
         headers: headers
@@ -786,4 +787,5 @@ function start() {
     }
   });
 }
+
 module.exports = { start };

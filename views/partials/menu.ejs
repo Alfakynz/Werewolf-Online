@@ -1,0 +1,60 @@
+<section class="reveal" title="Changer de page">
+  <select id="menu" onChange="redirection()">
+    <option value="accueil">Accueil</option>
+    <option value="regles">Règles</option>
+    <option value="quetes">Quêtes</option>
+    <option value="recompenses">Récompenses</option>
+    <option value="events">Évènements</option>
+    <option value="items">Items spéciaux</option>
+    <option value="questionnaire">Questionnaire</option>
+    <option value="search">Chercher quelqu'un</option>
+    <option value="infos">Informations</option>
+    <option value="copy-annonce">Copier l'annonce de la quête</option>
+  </select>
+</section>
+
+<script>
+  // Rediriger la page avec select
+  function redirection() {
+    var optnMenu = document.getElementById("menu").value;
+    if (optnMenu == "accueil") {
+      window.location.href = "/";
+    }
+    else if (optnMenu == "regles") {
+      window.location.href = "/regles";
+    }
+    else if (optnMenu == "quetes") {
+      window.location.href = "/quete"
+    }
+    else if (optnMenu == "recompenses") {
+      window.location.href = "/recompenses";
+    }
+    else if (optnMenu == "events") {
+      window.location.href = "/events";
+    }
+    else if (optnMenu == "items") {
+      window.location.href = "/items";
+    }
+    else if (optnMenu == "questionnaire") {
+      window.location.href = "/questionnaire";
+    }
+    else if (optnMenu == "infos") {
+      window.location.href = "/informations";
+    }
+    else if (optnMenu == "copy-annonce") {
+      window.location.href = "/annonce";
+    }
+    else if (optnMenu == "search") {
+      window.location.href = "/search";
+    }
+  }
+  
+  // Pour pré-sélectionner l'option correspondant à la page actuelle
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const currentPage = '<%= currentPage %>';
+    const menu = document.getElementById('menu');
+    if (menu) {
+      menu.value = currentPage;
+    }
+  });
+</script>

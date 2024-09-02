@@ -2,43 +2,22 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chercher un joueur Werewolf Online</title>
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Chercher un joueur" }) %>
 </head>
 
 <body>
-  <header id="content" class="reveal">
-    <h1>
-      Chercher un joueur<br>꧁Werewolf Online꧂
-    </h1>
-  </header>
+  <%- include('partials/header', { title: "Chercher un joueur" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil">Accueil</option>
-        <option value="regles">Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses">Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire">Questionnaire</option>
-        <option value="search" selected>Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'search' }) %>
     <section class="border reveal">
       <h2>Entrez le pseudo de quelqu'un</h2>
       <form class="searchForm" action="/search" method="post">
         <% if (player) { %>
-          <input name="username" type="search" placeholder="Chercher un joueur" value="<%= player.username %>">
+          <input name="username" type="search" placeholder="Chercher un joueur" value="<%= player.username %>" />
         <% } else { %>
-          <input name="username" type="search" placeholder="Chercher un joueur">
+          <input name="username" type="search" placeholder="Chercher un joueur" />
         <% } %>
-        <button class="button" type="submit">Chercher</button>
+        <button type="submit">Chercher</button>
       </form>
     </section>
     <% if (player) { %>
@@ -47,20 +26,21 @@
           <h2><%= player.username %> - Niveau <%= player.level %></h2>
           <p>
             <b>Bio :</b>
-            <br>
+            <br />
             <% for (let i = 0; i < bio.length; i++) { %>
-              <%= bio[i] %><br>
+              <%= bio[i] %>
+              <br />
             <% } %>
           </p>
           <p>
             <b>Dernière connexion :</b> <%= dateOnline %>
-            <br>
+            <br />
             <b>Création du compte :</b> <%= dateCompte %>
-            <br>
+            <br />
             <b>Roses reçues :</b> <%= player.receivedRosesCount %>
-            <br>
+            <br />
             <b>Roses envoyées :</b> <%= player.sentRosesCount %>
-            <br>
+            <br />
             <b>Status :</b> <%= player.status.toLowerCase() %>
           </p>
         </section>
@@ -70,7 +50,7 @@
             <% for (let i = 0; i < player.roleCards.length; i++) { %>
               <div class="roleCard reveal">
                 <b>Rôle :</b> <%= player.roleCards[i].roleId1 %>
-                <br>
+                <br />
                 <b>Rareté :</b>
                   <% if (player.roleCards[i].rarity == "COMMON") { %>
                     <span style="color:gray;"><%= player.roleCards[i].rarity.toLowerCase() %></span>
@@ -88,30 +68,20 @@
           </details>
         </section>
         <section class="reveal">
-          <img src="<%= srcImg %>" class="skin-player">
+          <img src="<%= srcImg %>" class="skin-player" />
         </section>
       </section>
     <% } else if (bio != "") { %>
       <section class="border reveal">
         <h2 style="color:red;"><%= bio %></h2>
-        <p>Rentrez un autre pseudo ou vérifiez l'orthographe du pseudo</p>
+        <p>
+          Rentrez un autre pseudo ou vérifiez l'orthographe du pseudo
+        </p>
       </section>
     <% } %>
-    <section class="return reveal">
-      <a href="#content">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
 
 </body>

@@ -2,80 +2,61 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accueil Werewolf Online</title>
-  <link href="css/style.css" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Accueil" }) %>
 </head>
 
 <body>
-  <header id="content" class="reveal">
-    <h1>
-      Bienvenue dans le clan<br>꧁Werewolf Online꧂
-    </h1>
-  </header>
+  <%- include('partials/header', { title: "Bienvenue dans le clan" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil" selected>Accueil</option>
-        <option value="regles">Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses">Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire">Questionnaire</option>
-        <option value="search">Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'accueil' }) %>
     <section class="border reveal">
-      <h2>
-        Bienvenue sur le site du clan Werewolf Online!
-      </h2>
+      <h2>Bienvenue sur le site du clan Werewolf Online!</h2>
       <p>
-        Vous pouvez avoir accès aux règles, aux quêtes, aux évènements du clan mais aussi aux différents items caché du jeu et un questionnaire permettant de gagner 10 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983"><br> Les quêtes gratuites ne sont pas forcément à jour sur ce site, pour être sûr d'avoir les vrai nombres, suivez les annonces dans le clan.
+        Vous pouvez avoir accès aux règles, aux quêtes, aux évènements du clan mais aussi aux différents items caché du jeu et un questionnaire permettant de gagner 10 
+        <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">.
+        <br />
+        Les quêtes gratuites ne sont pas forcément à jour sur ce site, pour être sûr d'avoir les vrai nombres, suivez les annonces dans le clan.
       </p>
     </section>
     <section class="border reveal">
       <h2>Prochaine quête</h2>
-      <img class="skin" src="<%= srcImgNext %>">
-      <% if (srcImgNext != "/images/enattente.jpg") { %>
+      <img class="skin" src="<%= srcImgNext %>" />
+      <% if (srcImgNext != "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893") { %>
         <p>
-          La prochaine quête sera une quête <img class="<%= currency[0] %>" src="<%= currency[1] %>">
-          <br>
+          La prochaine quête sera une quête <img class="<%= currency[0] %>" src="<%= currency[1] %>" />
+          <br />
           La quête commencera <%= dayNextQuest %>
-          <br>
-          Il n'y aura pas d'évènement lors de cette quête.
+          <br />
+          Il y aura l'évènement <a href="/events#vivivslg">Villageois VS loup-garous</a> lors de cette quête
+          <!--Il n'y aura pas d'évènement lors de cette quête.-->
         </p>
         <p>Participants pour le moment : (ne sont pas forcément les véritables participants) </p>
         <p>
           <% for (let j = 0; j < nextParticipants.length; j++) { %>
             <%= nextParticipants[j] %>
-            <br>
+            <br />
           <% } %>
         </p>
       <% } else { %>
-        <br><br>
+        <br /><br />
       <% } %>
     </section>
     <section class="border reveal">
       <h2>Quête actuelle</h2>
-      <img class="skin" src="<%= srcImg %>">
+      <img class="skin" src="<%= srcImg %>" />
       <p>
         <%= date %>
-        <% if (srcImg != "/images/enattente.jpg") { %>
-          <br>
+        <% if (srcImg != "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893") { %>
+          <br />
           Il n'y a pas d'évènement lors de cette quête.
         <% } %>
       </p>
-      <% if (srcImg != "/images/enattente.jpg") { %>
+      <% if (srcImg != "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893") { %>
         <p>Participants :</p>
         <p>
           <% for (let j = 0; j < participantsData.length; j++) { %>
             <%= participantsData[j].username %> : <%= participantsData[j].xp %>xp
-            <br>
+            <br />
           <% } %>
         </p>
       <% } %>
@@ -89,24 +70,21 @@
         <a href="/events">En savoir plus sur l'évènement</a>
       </p>
     </section>
+    <!--section class="border reveal">
+      <h2>Évènement actuel</h2>
+      <p>
+        <a href="/events#vivivslg">Villageois VS loup-garous</a>
+      </p>
+      <p>
+        <a href="/events">En savoir plus sur l'évènement</a>
+      </p>
+    </section-->
     <section>
-      <img class="loup2 reveal" src="https://svgsilh.com/svg/159979-ffffff.svg">
+      <img class="loup2 reveal" src="https://svgsilh.com/svg/159979-ffffff.svg" />
     </section>
-    <section class="return reveal">
-      <a href="#content">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
 
 </body>

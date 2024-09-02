@@ -3,80 +3,20 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
 const fs = require("fs");
+//const fetch = require('node-fetch');
 const app = express();
 const port = process.env.PORT || 3000;
-
-//const Database = require("@replit/database");
-//const db = new Database();
+const { ref, set, get, update, child, remove } = require('firebase/database');
+const { setDoc, getDoc, getDocs, collection, updateDoc, deleteDoc, doc, writeBatch, query, where } = require('firebase/firestore');
+const { database, db, users } = require('./firebaseConfig');
+require('dotenv').config();
 
 //Appel du bot lorsqu'on execute ce ficher
-//const bot = require('./bot.js');
-//bot.start();
-/*
-async function addAllMembers() {
-  const newPlayerData = []; // mettre les membres ici
-  await db.set("players", newPlayerData);
-  await db.set("questTime", "2023-11-18T20:47:22.566Z"); // la dernière date ici
-  writeJSON();
-}
-*/
-//addAllMembers();
-/*
-async function modifyQuest(ressource, username, valeur) {
-  const dictJoueur = await db.get("players");
-  if (ressource == "gold") {
-    if (dictJoueur) {
-      for (let i = 0; i < dictJoueur.length; i++) {
-        if (dictJoueur[i].username === username) {
-          dictJoueur[i].goldQuest = valeur;
-          break;
-        }
-      }
-      await db.set("players", dictJoueur);
-      writeJSON();
-    }
-  }
-  else if (ressource == "gem") {
-    if (dictJoueur) {
-      for (let i = 0; i < dictJoueur.length; i++) {
-        if (dictJoueur[i].username === username) {
-          dictJoueur[i].gemQuest = valeur;
-          break;
-        }
-      }
-      await db.set("players", dictJoueur);
-      writeJSON();
-    }
-  }
-  else {
-    console.log(ressource + " n'est pas une ressource connue");
-  }
-}
-*/
-//modifyQuest("gold", "Firelack", 27);
-/*
-function writeJSON() {
-  db.list().then(async keys => {
-    // Mettre la database dans le fichier JSON
-    const data = {};
-    for (const key of keys) {
-      data[key] = await db.get(key);
-    }
-    const jsonData = JSON.stringify(data, null, 2);
-    fs.writeFile('database.json', jsonData, 'utf8', function(err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Keys and values have been written to database.json\n');
-      }
-    });
-  });
-}
-writeJSON();
-*/
-const apiFire = process.env['APIFIRE'];
-const apiVal = process.env['API.VAL'];
+const bot = require('./bot.js');
+bot.start();
 
+const apiFire = process.env['APIFIRE'];
+const apiVal = process.env['APIVAL'];
 const response1 = process.env['Question1'];
 const response2 = process.env['Question2'];
 const response3 = process.env['Question3'];
@@ -108,7 +48,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('views'));
 
 const clanId = "28f85d51-37b1-4fc6-a938-47656353363c";
-const clanIdAPI = "2353e8b6-76a3-4d9a-92ae-62848e9d476a"
+const clanIdAPI = "2353e8b6-76a3-4d9a-92ae-62848e9d476a";
 const playerId = "1d614485-0d87-4724-834a-33e8b26dce47"; // Id de Soline
 const namePlayer = "ninaa_";
 const nameClan = "APIclan"; // WerewoIf OnIine*
@@ -159,6 +99,115 @@ const clans = {
   searchName: `clans/search?name=${nameClan}`,
   info: `clans/${clanId}/info`,
 }
+
+// Référence à la base de données des joueurs
+//const playersRef = ref(database, 'players');
+const playersRef = collection(db, 'players');
+
+// Supprimer tous les joueurs de la base de données
+function removeAll() {
+  getDocs(playersRef)
+    .then(snapshot => {
+      const batch = writeBatch(db);
+      snapshot.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+      return batch.commit();
+    })
+    .then(() => {
+      console.log('Tous les joueurs ont été supprimés.');
+    })
+    .catch(error => {
+      console.error('Erreur lors de la suppression des joueurs :', error);
+    });
+}
+
+// Ajouter tous les joueurs à la base de données en ajoutant ceux qui n'y sont pas et retirant ceux qui n'y sont plus
+function addAllMembers() {
+  axios.get(`https://api.wolvesville.com/clans/${clanId}/members`, {
+    headers: headers
+  })
+    .then(response => {
+      if (response.status === 200) {
+        return response.data;
+      } else {
+        throw new Error('Request failed.');
+      }
+    })
+    .then(responseData => {
+      const playersRef = collection(db, 'players');
+
+      return getDocs(playersRef).then(snapshot => {
+        let existingPlayers = {};
+        snapshot.forEach(doc => {
+          existingPlayers[doc.id] = doc.data();
+        });
+
+        let apiPlayerIds = new Set(responseData.map(player => player.playerId));
+        const batch = writeBatch(db);
+
+        // Ajouter ou mettre à jour les joueurs dans Firestore
+        responseData.forEach(player => {
+          if (!existingPlayers[player.playerId]) {
+            const newPlayer = {
+              username: player.username,
+              playerId: player.playerId,
+              gemQuest: 0,
+              goldQuest: 0,
+              numberTryTest: 0
+            };
+            batch.set(doc(playersRef, player.playerId), newPlayer);
+          }
+        });
+
+        // Supprimer les joueurs qui ne sont plus dans la réponse API
+        Object.keys(existingPlayers).forEach(playerId => {
+          if (!apiPlayerIds.has(playerId)) {
+            batch.delete(doc(playersRef, playerId));
+          }
+        });
+
+        return batch.commit();
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+//removeAll();
+//addAllMembers();
+
+// Modifier le nombre de quête gratuite d'un joueur
+async function updateQuest(username, questType, amount) {
+  try {
+    // Rechercher les joueurs avec le nom d'utilisateur correspondant
+    const querySnapshot = await getDocs(query(playersRef, where("username", "==", username)));
+
+    if (querySnapshot.empty) {
+      throw new Error('Joueur non trouvé.');
+    }
+
+    // S'assurer que questType est valide
+    if (!['goldQuest', 'gemQuest'].includes(questType)) {
+      throw new Error('Type de quête invalide. Utilisez "goldQuest" ou "gemQuest".');
+    }
+
+    // Mettre à jour la valeur de la quête pour chaque document trouvé
+    querySnapshot.forEach(async (docSnapshot) => {
+      const playerRef = docSnapshot.ref;
+      await updateDoc(playerRef, {
+        [questType]: amount
+      });
+    });
+
+    console.log(`La quête ${questType} de ${username} a été mise à jour avec ${amount}.`);
+  } catch (error) {
+    console.error('Erreur lors de la mise à jour de la quête :', error);
+  }
+}
+
+updateQuest('NgloKante', 'goldQuest', 3)
 
 app.get('/', (req, res) => {
   let srcImg = "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893";
@@ -307,10 +356,23 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/annonce', (req, res) => {
-  //db.get("players").then(value => {
-    res.render('annonce'/*, { players: value }*/);
-  //})
+app.get('/annonce', async (req, res) => {
+  const playersRef = collection(db, 'players');
+
+  try {
+    const snapshot = await getDocs(playersRef);
+
+    if (!snapshot.empty) {
+      const players = snapshot.docs ? snapshot.docs.map(doc => doc.data()) : [];
+      res.render('annonce', { players });
+    } else {
+      console.log("No data available");
+      res.render('annonce', { players: [] });
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération des joueurs :', error);
+    res.render('annonce', { players: [] });
+  }
 });
 
 app.get('/events', (req, res) => {
@@ -329,47 +391,54 @@ app.get('/questionnaire', (req, res) => {
   res.render('questionnaire', { pseudo: false });
 });
 
-app.get('/quete', (req, res) => {
-  /*axios.get(`https://api.wolvesville.com/clans/${clanId}/quests/history`, {
-    headers: headers
-  }).then(response => {
+app.get('/quete', async (req, res) => {
+  try {
+    const response = await axios.get(`https://api.wolvesville.com/clans/${clanId}/quests/history`, {
+      headers: headers
+    });
+
     const responseData = response.data;
     const lastQuest = responseData[0];
     const questTime = lastQuest.tierStartTime;
-    db.get('questTime').then(value => {
-      if (questTime !== value) {
-        db.set('questTime', questTime);
-        const questParticipants = lastQuest.participants;
-        for (let i = 0; i < lastQuest.participants.length; i++) {
-          const username = questParticipants[i].username;
-          const xp = questParticipants[i].xp;
-          const goldQuest = Math.floor(xp / 8000);
-          db.get("players").then(players => {
-            const newPlayers = players.map(player => {
-              if (player.username === username) {
-                player.goldQuest += goldQuest;
-              }
-              return player;
-            });
-            db.set("players", newPlayers);
-            writeJSON();
-          }).catch(error => {
-            console.log("An error occurred while fetching the data.");
-            console.error(error);
-          });
+
+    // Utilisation d'un ID fixe pour le document dans la collection "quests"
+    const questDocRef = doc(db, 'quests', 'currentQuest');
+    const questDocSnapshot = await getDoc(questDocRef);
+
+    if (!questDocSnapshot.exists() || questTime !== questDocSnapshot.data().questTime) {
+      // Mettre à jour le temps de la quête dans Firestore
+      await setDoc(questDocRef, { questTime: questTime });
+
+      const questParticipants = lastQuest.participants;
+
+      for (let i = 0; i < questParticipants.length; i++) {
+        const username = questParticipants[i].username;
+        const xp = questParticipants[i].xp;
+        const goldQuest = Math.floor(xp / 8000);
+
+        const playerQuery = query(playersRef, where('username', '==', username));
+        const playerSnapshot = await getDocs(playerQuery);
+
+        if (!playerSnapshot.empty) {
+          const playerDoc = playerSnapshot.docs[0];
+          const playerData = playerDoc.data();
+          const newGoldQuest = playerData.goldQuest + goldQuest;
+
+          // Mettre à jour le joueur dans Firestore
+          await updateDoc(playerDoc.ref, { goldQuest: newGoldQuest });
         }
       }
-      db.get("players").then(value => {*/
-        res.render("quete"/*, { players: value }*/);
-      /*});
-    }).catch(error => {
-      console.log("An error occurred while fetching the data.");
-      console.error(error);
-    });
-  }).catch(error => {
-    console.log("An error occurred while fetching the data.");
-    console.error(error);
-  });*/
+    }
+
+    // Récupérer tous les joueurs pour l'affichage
+    const playersSnapshot = await getDocs(playersRef);
+    const playersArray = playersSnapshot.docs.map(doc => doc.data());
+
+    res.render("quete", { players: playersArray });
+  } catch (error) {
+    console.log("An error occurred:", error);
+    res.status(500).send("An error occurred while processing the quest.");
+  }
 });
 
 app.get('/recompenses', (req, res) => {
@@ -380,50 +449,48 @@ app.get('/regles', (req, res) => {
   res.render('regles');
 });
 
-/*app.post('/questionnaire', (req, res) => {
-  const { question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15, pseudo } = req.body;
-  const questions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
-  axios.get(`https://api.wolvesville.com/clans/${clanId}/members`, {
-    method: 'GET',
-    headers: headers
-  })
-    .then(response => {
-      if (response.status === 200) {
-        return JSON.stringify(response);
-      } else {
-        throw new Error('Request failed.');
-      }
-    })
-    .then(responseData => {
-      var isPseudoInClan = false;
-      for (let i = 0; i < responseData.length; i++) {
-        if (responseData[i].username === pseudo) {
-          isPseudoInClan = true;
-          break;
-        }
-      }
-      if (isPseudoInClan) {
-        var wrongAnswers = [];
-        var correctAnswers = 0;
-        var messageToClan = pseudo + " : ";
-        for (let i = 0; i < responses.length; i++) {
-          if (questions[i] !== responses[i]) {
-            if (questions[i] !== response3bis) {
-              wrongAnswers.push({
-                question: questions[i],
-                isCorrect: false,
-                class: "red"
-              });
-              messageToClan += "Q" + (i + 1) + " incorrecte. ";
-            } else {
-              correctAnswers++;
-              wrongAnswers.push({
-                question: questions[i],
-                isCorrect: true,
-                class: "green"
-              });
-              messageToClan += "Q" + (i + 1) + " correcte. ";
-            }
+app.post('/questionnaire', async (req, res) => {
+  const {
+    question1, question2, question3, question4, question5,
+    question6, question7, question8, question9, question10,
+    question11, question12, question13, question14, question15,
+    pseudo
+  } = req.body;
+
+  const questions = [
+    question1, question2, question3, question4, question5,
+    question6, question7, question8, question9, question10,
+    question11, question12, question13, question14, question15
+  ];
+
+  try {
+    // Récupérer les membres du clan
+    const response = await axios.get(`https://api.wolvesville.com/clans/${clanId}/members`, {
+      headers: headers
+    });
+
+    if (response.status !== 200) {
+      throw new Error('Request failed.');
+    }
+
+    const responseData = response.data;
+    const isPseudoInClan = responseData.some(member => member.username === pseudo);
+
+    if (isPseudoInClan) {
+      let playerID = responseData.find(member => member.username === pseudo).playerId;
+      let wrongAnswers = [];
+      let correctAnswers = 0;
+      let messageToClan = `${pseudo} : `;
+
+      for (let i = 0; i < questions.length; i++) {
+        if (questions[i] !== responses[i]) {
+          if (questions[i] !== response3bis) {
+            wrongAnswers.push({
+              question: questions[i],
+              isCorrect: false,
+              class: "red"
+            });
+            messageToClan += `Q${i + 1} incorrecte. `;
           } else {
             correctAnswers++;
             wrongAnswers.push({
@@ -431,35 +498,58 @@ app.get('/regles', (req, res) => {
               isCorrect: true,
               class: "green"
             });
-            messageToClan += "Q" + (i + 1) + " correcte. ";
+            messageToClan += `Q${i + 1} correcte. `;
           }
+        } else {
+          correctAnswers++;
+          wrongAnswers.push({
+            question: questions[i],
+            isCorrect: true,
+            class: "green"
+          });
+          messageToClan += `Q${i + 1} correcte. `;
         }
-        messageToClan += correctAnswers + "/15";
-        axios.get(`https://api.wolvesville.com/clans/${clanIdAPI}/chat`, {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify({ "message": messageToClan })
-        }).then(response => {
-          if (response.status === 200) {
-            return response;
-          } else {
-            throw new Error('La requête a échoué.');
-          }
-        }).then(data => {
-          console.log(data);
-        }).catch(error => {
-          console.error(error);
-        });
-        res.render('note', { correctAnswers: correctAnswers, pseudo: pseudo });
       }
-      else {
-        res.render('questionnaire', { pseudo: pseudo });
+
+      messageToClan += `${correctAnswers}/15`;
+
+      // Envoyer le message au clan via l'API Wolvesville
+      await fetch(`https://api.wolvesville.com/clans/${clanIdAPI}/chat`, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ "message": messageToClan })
+      });
+
+      // Enregistrer les résultats du questionnaire dans Firestore
+      const playerIdRef = doc(db, 'players', playerID);
+
+      // Récupérer les données actuelles du joueur
+      const playerDoc = await getDoc(playerIdRef);
+      if (playerDoc.exists()) {
+        const playerData = playerDoc.data();
+
+        if (playerData.numberTryTest < 3) {
+          await setDoc(playerIdRef, { numberTryTest: playerData.numberTryTest + 1 }, { merge: true });
+        }
+        else {
+          res.status(500).send('Vous avez déjà participer 3 fois au questionnaire.');
+        }
       }
-    })
-    .catch(error => {
-      console.error(error);
-    });
-});*/
+
+      // Enregistrer les résultats du questionnaire dans Firestore
+      await setDoc(playerIdRef, { correctAnswers, wrongAnswers }, { merge: true });
+
+      res.render('note', { correctAnswers: correctAnswers, pseudo: pseudo });
+
+    } else {
+      res.render('questionnaire', { pseudo: pseudo });
+    }
+
+  } catch (error) {
+    console.error('Erreur :', error);
+    res.status(500).send('Une erreur est survenue lors du traitement du questionnaire.');
+  }
+});
 
 app.get('/search', (req, res) => {
   res.render('search', { player: false, srcImg: "", bio: "", dateCompte: "", dateOnline: "" });

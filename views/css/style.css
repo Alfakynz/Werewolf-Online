@@ -14,7 +14,9 @@ body {
   padding-bottom: 75px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   text-align: center;
   margin-left: 10px;
   margin-right: 10px;
@@ -22,13 +24,11 @@ h1, h2, h3 {
 
 /* Logo discord/insta */
 footer {
-  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   width: auto;
-  padding: 4px 3px 0 3px;
-  background-color: #400099;
-  opacity: 97.5%;
-  border: solid 1px #100026;
-  border-radius: 10px;
+  height: auto;
+  padding: 0;
   position: fixed;
   top: 14%;
   left: 2.5%;
@@ -41,12 +41,35 @@ select {
   background-color: #400099;
   color: #ffffff;
   border: solid 1px #100026;
-  border-radius: 5px;
+  border-radius: 20px;
   margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+
+select:hover {
+  filter: drop-shadow(0 0 10px #400099);
 }
 
 a {
   color: #ffffff;
+}
+
+button {
+  background-color: #400099;
+  color: #ffffff;
+  border: solid 1px #100026;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+input {
+  background-color: transparent;
+  color: #ffffff;
+  border: solid 2px #100026;
+  border-radius: 20px;
+  padding: 5px;
 }
 
 /* CSS pour téléphone */
@@ -56,20 +79,26 @@ a {
     text-align: center;
     margin: 15px auto 15px auto;
   }
+
   .lien {
     width: 2.25em;
   }
+
   .return {
     width: 2.25em;
     height: 2.25em;
   }
-  input[type = radio], .p-question14 {
+
+  input[type=radio],
+  .p-question14 {
     margin-left: 25%;
     text-align: left;
   }
+
   details {
     width: 75%;
   }
+
   p {
     margin: 15px;
   }
@@ -83,20 +112,26 @@ a {
     text-align: center;
     margin: 15px auto 15px auto;
   }
+
   .lien {
     width: 2.75em;
   }
+
   .return {
     width: 2.75em;
     height: 2.75em;
   }
-  input[type = radio], .p-question14 {
+
+  input[type=radio],
+  .p-question14 {
     margin-left: 35%;
     text-align: left;
   }
+
   details {
     width: 65%;
   }
+
   p {
     margin: 25px;
   }
@@ -109,31 +144,40 @@ a {
     text-align: center;
     margin: 15px auto 15px auto;
   }
+
   .lien {
     width: 3.25em;
   }
+
   .return {
     width: 3.25em;
     height: 3.25em;
   }
-  input[type = radio], .p-question14 {
+
+  input[type=radio],
+  .p-question14 {
     margin-left: 40%;
     text-align: left;
   }
+
   details {
     width: 50%;
   }
+
   p {
     margin: 35px;
   }
 }
 
 /* Tableau des prix */
-tr, caption {
+tr,
+caption {
   height: 30px;
 }
 
-table, th, td {
+table,
+th,
+td {
   border: 2px solid #100026;
   border-collapse: collapse;
 }
@@ -154,6 +198,33 @@ table {
   height: 150px;
 }
 
+details {
+  margin: 0 auto;
+  font-size: auto;
+}
+
+summary {
+  background-color: #400099;
+  color: #ffffff;
+  padding: 0 10px;
+  border: solid 1px #100026;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+footer>a>img {
+  background-color: transparent;
+  transition: all 300ms ease;
+}
+
+footer>a.discord>img:hover {
+  filter: drop-shadow(0 0 10px #657fd2);
+}
+
+footer>a.insta>img:hover {
+  filter: drop-shadow(0 0 10px #ff1474);
+}
+
 .left {
   text-align: left;
 }
@@ -168,18 +239,18 @@ table {
 }
 
 /* Événement en cours et passé dans la page des events*/
-.event {
+.event-permanent {
   border: solid 2px #ff0000;
   border-radius: 5px;
 }
 
 .next-event {
-  border: solid 2px #ffff00;
+  border: solid 2px #0000ff;
   border-radius: 5px;
 }
 
-.event-past {
-  border: solid 2px #0000ff;
+.event {
+  border: solid 2px #ff0000;
   border-radius: 5px;
 }
 
@@ -205,14 +276,21 @@ table {
 }
 
 /* Taille des img de roses */
-.roses, .or, .gem {
+.roses,
+.or,
+.gem {
   height: 15px;
   vertical-align: middle;
   padding-bottom: 2px;
 }
 
 /* Taille des img pour les titre h2 */
-.b-cpl, .b-vivi, .b-lg, .b-roses, .b-or, .b-gem {
+.b-cpl,
+.b-vivi,
+.b-lg,
+.b-roses,
+.b-or,
+.b-gem {
   height: 25px;
   vertical-align: middle;
   padding-bottom: 2px;
@@ -226,14 +304,21 @@ table {
   border: solid 1px #100026;
   border-radius: 25px;
   background-color: #400099;
+  transition: all 300ms ease;
 }
+
 /* La taille du logo */
 .returnLogo {
   width: 100%;
 }
 
-.return, .returnLogo {
+.return,
+.returnLogo {
   opacity: 95%;
+}
+
+.return:hover {
+  filter: drop-shadow(0 0 10px #400099);
 }
 
 /* Cercle bleu dans la page items */
@@ -242,43 +327,9 @@ table {
   background-color: #03bcff;
   border-radius: 50px;
   border: solid 1px white;
-  padding-left: 7px;
-  padding-right: 7px;
+  padding: 0px 7px;
 }
 
-/* style du bouton pour copier */
-#copyButton {
-  background-color: #400099;
-  color: #ffffff;
-  border: solid 1px #100026;
-  border-radius: 25px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-/* style d'un bouton */
-.button {
-  background-color: #400099;
-  color: #ffffff;
-  border: solid 1px #100026;
-  border-radius: 25px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-details {
-  margin: 0 auto;
-  font-size: auto;
-}
-
-summary {
-  background-color: #400099;
-  color: #ffffff;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: solid 1px #100026;
-  vertical-align: middle;
-}
 .pointer {
   cursor: pointer;
 }
@@ -294,13 +345,14 @@ summary {
 
 /* reveal du scroll*/
 .reveal {
-   opacity: 0;
+  opacity: 0;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -322,18 +374,8 @@ summary {
   border-radius: 10px;
 }
 
-summary {
-  cursor: pointer;
-}
-
 .searchForm {
   margin-bottom: 15px;
-}
-
-.searchForm > input {
-  border-radius: 10px;
-  border : none;
-  padding: 4px;
 }
 
 .skin-player {
@@ -348,8 +390,7 @@ summary {
 }
 
 .summary {
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px 0;
   width: 50%;
   border-radius: 8px 8px 2px 2px;
   margin-inline: auto;

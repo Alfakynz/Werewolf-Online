@@ -1,75 +1,61 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Récompenses du clan Werewolf Online</title>
-  <meta name="description"
-    content="Site web du clan Werewolf Online. Le site explique les règles, les quêtes et les évènements." />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
-  <link rel="shortcut icon" type="image/png" href="https://svgsilh.com/png-1024/159979-400099.png">
+  <%- include('partials/head', { title: "Récompenses" }) %>
 </head>
 
 <body>
-  <header id="content" class="reveal">
-    <h1>
-      Récompenses<br> ꧁Werewolf Online꧂
-    </h1>
-  </header>
+  <%- include('partials/header', { title: "Récompenses" }) %>
   <main>
-    <section class="reveal">
-      <select id="menu" value={optnMenu} onChange="redirection()">
-        <option value="accueil">Accueil</option>
-        <option value="regles">Règles</option>
-        <option value="quetes">Quêtes</option>
-        <option value="recompenses" selected>Récompenses</option>
-        <option value="events">Évènements</option>
-        <option value="items">Items spéciaux</option>
-        <option value="questionnaire">Questionnaire</option>
-        <option value="search">Chercher quelqu'un</option>
-        <option value="infos">Informations</option>
-        <!--option value="quest-copy">Copier l'annonce de la quête</option-->
-      </select>
-    </section>
+    <%- include('partials/menu', { currentPage: 'recompenses' }) %>
     <section id="bonus-malus" class="border reveal">
-      <h2>Bonus/malus</h2>
+      <h2>Bonus / malus</h2>
       <p>
-        Tous les 8000xp lors d'une quête, 1 quête <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> gratuite. </br>
-    Moins de 300xp lors d'une quête, prochaine quête <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> à 800 <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png">. </br>
-  Moins de 1000xp lors d'une quête, prochaine quête <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> à 600 <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png">.
+        Tous les 8000xp lors d'une quête, 1 quête 
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+        gratuite. 
+        <br />
+        Moins de 300xp lors d'une quête, prochaine quête 
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+        à 800
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />.
+        <br />
+        Moins de 1000xp lors d'une quête, prochaine quête
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+        à 600 
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />.
       </p>
     </section>
     <section id="100kxp" class="border reveal">
       <h2>Tous les 100k xp contribué au clan</h2>
-      <p>Vous pouvez choisir entre:</p>
-      <p>1 quête <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png"> gratuite
-        <br>
-        3 quêtes <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> gratuites
-        <br>
-        90 <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983">
+      <p>
+        Vous pouvez choisir entre :
+      </p>
+      <p>
+        1 quête 
+        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+        gratuite
+        <br />
+        3 quêtes
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+        gratuites
+        <br />
+        90 
+        <img class="roses" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/rose.png?v=1709046833983" />
       </p>
     </section>
     <section id="topxp" class="border reveal">
       <h2>Top XP du mois</h2>
-      <p> Chaque mois la personne ayant fait le plus d’xp gagnera 2 quêtes <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png"> gratuites </p>
+      <p>
+        Chaque mois la personne ayant fait le plus d’xp gagnera 2 quêtes
+        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" /> 
+        gratuites.
+      </p>
     </section>
-    <section class="return reveal">
-      <a href="#">
-        <img class="returnLogo" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/fleche.png?v=1709046893508">
-      </a>
-    </section>
+    <%- include('partials/return') %>
   </main>
-  <footer class="reveal">
-    <a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20discord.png?v=1709046892380">
-    </a>
-    <br>
-    <a target="_blank" href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ==">
-      <img class="lien" src="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/logo%20insta.png?v=1709046891548">
-    </a>
-  </footer>
+  <%- include('partials/footer') %>
   <script src="scripts/script.js"></script>
 </body>
 

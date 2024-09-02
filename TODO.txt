@@ -1,6 +1,0 @@
-Il faut :
-- revoir le bot discord ?
-- remettre database ?
-- la prochaine quete bug quand il y en a pas
-- verifier si la quete active bug pas quand il y en a pas et reparer si c'est le cas
-- revoir le questionnaires, si on envoie pas il y a une page pas utilisée

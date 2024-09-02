@@ -1,39 +1,3 @@
-// Rediriger la page avec select
-function redirection() {
-  var optnMenu = document.getElementById("menu").value;
-  if (optnMenu == "accueil") {
-    document.location.href = "/";
-  }
-  else if (optnMenu == "regles") {
-    document.location.href = "/regles";
-  }
-  else if (optnMenu == "quetes") {
-    document.location.href = "/quete"
-  }
-  else if (optnMenu == "recompenses") {
-    document.location.href = "/recompenses";
-  }
-  else if (optnMenu == "events") {
-    document.location.href = "/events";
-  }
-  else if (optnMenu == "items") {
-    document.location.href = "/items";
-  }
-  else if (optnMenu == "questionnaire") {
-    document.location.href = "/questionnaire";
-  }
-  else if (optnMenu == "infos") {
-    document.location.href = "/informations";
-  }
-  else if (optnMenu == "quest-copy") {
-    document.location.href = "/annonce";
-  }
-  else if (optnMenu == "search") {
-    document.location.href = "/search";
-  }
-}
-
-/*-------------------------------------*/
 // Copier du texte
 function copyText(text) {
   var textToCopy = text;
