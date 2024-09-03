@@ -1,8 +1,5 @@
 const { initializeApp } = require('firebase/app');
-const { getDatabase, ref, set, get, child, remove } = require('firebase/database');
 const { getDocs, getFirestore, collection } = require('firebase/firestore')
-//import {initializeApp } from 'firebase/app';
-//import { getDatabase, ref, set, get, child, remove } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDS7Fe4UDxlF5rIO9HmcuK3yi19MGHabz8",
@@ -16,10 +13,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
-const app2 = initializeApp(firebaseConfig);
-const db = getFirestore(app2);
+const db = getFirestore(app);
 
 var users;
 
@@ -34,4 +28,4 @@ const setUsers = async () => {
 setUsers();
 
 // Exportation des fonctions si nécessaire
-module.exports = { database, db, users };
+module.exports = { db, users };

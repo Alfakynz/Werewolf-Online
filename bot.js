@@ -15,7 +15,6 @@ function start() {
     ]
   });
 
-
   const clanId = "28f85d51-37b1-4fc6-a938-47656353363c"
   const headers = {
     'Content-Type': 'application/json',
@@ -23,10 +22,10 @@ function start() {
     'Authorization': `Bot ${accessToken}` // Headers de l'api
   }
 
-
   client.on("ready", () => {
     console.log("Bot opérationnel");
   });
+
   client.login(`Bot ${botKey}`); // Code du bot discord
   client.on("messageCreate", message => {
     //console.log(message); // ne mettre que si on veut tout les details du messages c'est plus lisible sans

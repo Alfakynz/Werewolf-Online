@@ -2,13 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
-const fs = require("fs");
-//const fetch = require('node-fetch');
 const app = express();
 const port = process.env.PORT || 3000;
-const { ref, set, get, update, child, remove } = require('firebase/database');
 const { setDoc, getDoc, getDocs, collection, updateDoc, deleteDoc, doc, writeBatch, query, where } = require('firebase/firestore');
-const { database, db, users } = require('./firebaseConfig');
+const { db, users } = require('./firebaseConfig');
 require('dotenv').config();
 
 //Appel du bot lorsqu'on execute ce ficher
@@ -101,7 +98,6 @@ const clans = {
 }
 
 // Référence à la base de données des joueurs
-//const playersRef = ref(database, 'players');
 const playersRef = collection(db, 'players');
 
 // Supprimer tous les joueurs de la base de données
@@ -176,7 +172,7 @@ function addAllMembers() {
 }
 
 //removeAll();
-//addAllMembers();
+addAllMembers();
 
 // Modifier le nombre de quête gratuite d'un joueur
 async function updateQuest(username, questType, amount) {

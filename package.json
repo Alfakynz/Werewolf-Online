@@ -20,9 +20,7 @@
     "express-session": "^1.18.0",
     "fastify": "^4.28.1",
     "firebase": "^10.13.1",
-    "fs": "^0.0.2",
     "handlebars": "^4.7.8",
-    "node-fetch": "^3.3.2",
     "npm": "^10.8.3"
   },
   "engines": {
