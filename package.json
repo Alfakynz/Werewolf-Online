@@ -24,7 +24,7 @@
     "npm": "^10.8.3"
   },
   "engines": {
-    "node": "22.x"
+    "node": "20.x"
   },
   "keywords": [
     "node"
