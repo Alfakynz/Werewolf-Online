@@ -205,13 +205,11 @@ async function updateQuest(username, questType, amount) {
   }
 }
 
-updateQuest('NgloKante', 'goldQuest', 3)
-
 app.get('/', (req, res) => {
-  let srcImg = "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893";
+  let srcImg = "images/enattente.jpeg";
   let participantsData = [];
   let date = "Aucune quête en cours.";
-  let srcImgNext = "https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893";
+  let srcImgNext = "images/enattente.jpeg";
   let nextParticipants = [];
   let dayNextQuest = "";
   let currency = ['or', 'https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png'];

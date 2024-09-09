@@ -254,15 +254,6 @@ footer>a.insta>img:hover {
   border-radius: 5px;
 }
 
-/* Taille des img de loups*/
-.loup1 {
-  width: 100%;
-}
-
-.loup2 {
-  width: 75%;
-}
-
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

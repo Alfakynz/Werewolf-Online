@@ -24,8 +24,7 @@
         <section class="border reveal">
           <h2>Prochaine quête</h2>
           <img class="skin" src="<%= srcImgNext %>" />
-          <% if (srcImgNext
-            !="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893" ) { %>
+          <% if (srcImgNext !="images/enattente.jpeg" ) { %>
             <p>
               La prochaine quête sera une quête <img class="<%= currency[0] %>" src="<%= currency[1] %>" />
               <br />
@@ -50,14 +49,12 @@
           <img class="skin" src="<%= srcImg %>" />
           <p>
             <%= date %>
-              <% if (srcImg
-                !="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893" ) { %>
+              <% if (srcImg !="images/enattente.jpeg" ) { %>
                 <br />
                 Il n'y a pas d'évènement lors de cette quête.
                 <% } %>
           </p>
-          <% if (srcImg !="https://cdn.glitch.global/da17588f-b176-421d-842d-6ef157fe00f3/enattente.jpg?v=1709046894893"
-            ) { %>
+          <% if (srcImg !="images/enattente.jpeg" ) { %>
             <p>Participants :</p>
             <p>
               <% for (let j=0; j < participantsData.length; j++) { %>
@@ -85,9 +82,6 @@
         <a href="/events">En savoir plus sur l'évènement</a>
       </p>
     </section-->
-        <section>
-          <img class="loup2 reveal" src="https://svgsilh.com/svg/159979-ffffff.svg" />
-        </section>
         <%- include('partials/return') %>
     </main>
     <%- include('partials/footer') %>

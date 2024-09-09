@@ -7,203 +7,214 @@
 
 <body>
   <%- include('partials/header', { title: "Quêtes du clan" }) %>
-  <main>
-    <%- include('partials/menu', { currentPage: 'quetes' }) %>
-    <section class="border reveal">
-      <h2>Déroulement</h2>
-      <p>
-        Vote des quêtes le lundi puis annonce de la 1ère quête le lundi à 20h.
-        <br />
-        Lancement de la quête le mardi à 20h.
-        <br />
-        Pour le reste des quêtes il n’y a pas de jour précis afin qu’on puisse en lancer autant que l’on veut, on préviendra toujours 24h à l’avance.
-        <br />
-        On vous conseille d’économiser l’or quand vous voyez que certaines quêtes de la semaine vous plaise afin de pouvoir donner directement étant donné les délais court.
-        <br />
-        Donner l'or / gemmes seulement après l'annonce de la quête et bien évidemment avant son lancement ! (il nous est impossible de vous rendre l'or ou de vous rajouter dans une quête en cours).
-        <br />
-        Il est possible qu’on vous envoie un message privé si vous n’arrivez pas à voir les annonces des quêtes à temps, pour cela prévenez nous pour qu’on vous mette dans la liste.
-        <br />
-        Il peut y avoir un événement pendant une quête.
-      </p>
-      <p>
-        <a href="/events">En savoir plus sur les événements</a>
-      </p>
-    </section>
-    <section class="reveal">
-      <table>
-        <caption>Prix des quêtes</caption>
-        <tr>
-          <th>Quête</th>
-          <th>Quête <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" /></th>
-          <th>Quête <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" /></th>
-        </tr>
-        <tr>
-          <th>Prix</th>
-          <td>400 <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" /></td>
-          <td>80 <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" /></td>
-        </tr>
-        <tr>
-          <td colspan="3">
-            Tout don autre que 80
+    <main>
+      <%- include('partials/menu', { currentPage: 'quetes' }) %>
+        <section class="border reveal">
+          <h2>Déroulement</h2>
+          <p>
+            Vote des quêtes le lundi puis annonce de la 1ère quête le lundi à 20h.
+            <br />
+            Lancement de la quête le mardi à 20h.
+            <br />
+            Pour le reste des quêtes il n’y a pas de jour précis afin qu’on puisse en lancer autant que l’on veut, on
+            préviendra toujours 24h à l’avance.
+            <br />
+            On vous conseille d’économiser l’or quand vous voyez que certaines quêtes de la semaine vous plaise afin de
+            pouvoir donner directement étant donné les délais court.
+            <br />
+            Donner l'or / gemmes seulement après l'annonce de la quête et bien évidemment avant son lancement ! (il nous
+            est impossible de vous rendre l'or ou de vous rajouter dans une quête en cours).
+            <br />
+            Il est possible qu’on vous envoie un message privé si vous n’arrivez pas à voir les annonces des quêtes à
+            temps, pour cela prévenez nous pour qu’on vous mette dans la liste.
+            <br />
+            Il peut y avoir un événement pendant une quête.
+          </p>
+          <p>
+            <a href="/events">En savoir plus sur les événements</a>
+          </p>
+        </section>
+        <section class="reveal">
+          <table>
+            <caption>Prix des quêtes</caption>
+            <tr>
+              <th>Quête</th>
+              <th>Quête <img class="or"
+                  src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" /></th>
+              <th>Quête <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+              </th>
+            </tr>
+            <tr>
+              <th>Prix</th>
+              <td>400 <img class="or"
+                  src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" /></td>
+              <td>80 <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" /></td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                Tout don autre que 80
+                <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+                ou 400
+                <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+                sera compté comme un don au clan.
+              </td>
+            </tr>
+          </table>
+        </section>
+        <section class="border reveal">
+          <h2>
+            Précision pour les quêtes
+            <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+          </h2>
+          <p>
+            Les quêtes
             <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-            ou 400
+            sont à 80
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            au lieu de 135 par personne, les gemmes sont compliqué à avoir donc espérons qu'elles seront plus accessible
+            pour vous.
+            <br />
+            Cependant, le moyen utilisé pour avoir des gemmes est très long donc on pourra en faire seulement 3 tous les
+            2 mois.
+            <br />
+            Si beaucoup d'inscrit pendant 1 quête c'est possible qu'on puisse en faire que 2.
+            <br />
+            Il est possible d'échanger 5 quêtes
             <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            sera compté comme un don au clan.
-          </td>
-        </tr>
-      </table>
-    </section>
-    <section class="border reveal">
-      <h2>
-        Précision pour les quêtes
-        <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-      </h2>
-      <p>
-        Les quêtes
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        sont à 80 
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" /> 
-        au lieu de 135 par personne, les gemmes sont compliqué à avoir donc espérons qu'elles seront plus accessible pour vous.
-        <br />
-        Cependant, le moyen utilisé pour avoir des gemmes est très long donc on pourra en faire seulement 3 tous les 2 mois.
-        <br />
-        Si beaucoup d'inscrit pendant 1 quête c'est possible qu'on puisse en faire que 2.
-        <br />
-        Il est possible d'échanger 5 quêtes 
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        gratuite contre 1 quête
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" /> 
-        gratuite.
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Comment utiliser les quêtes gratuites?</h2>
-      <p>
-        Faites un don de 1
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        au clan en mettant comme raison que vous utilisez 1 quête gratuite (préciser si 
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        ou
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        ).
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>
-        Quêtes
-        <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        gratuites
-      </h2>
-      <p>
-        Les quêtes
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        peuvent être obtenues tous les 8000xp contribués dans une quête.
-      </p>      
-      <p>
-        <% players.sort((a, b) => b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
-          <% if (players[i].goldQuest > 0) { %>
-            <%= players[i].username %> : <%= players[i].goldQuest %>
+            gratuite contre 1 quête
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            gratuite.
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>Comment utiliser les quêtes gratuites?</h2>
+          <p>
+            Faites un don de 1
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            au clan en mettant comme raison que vous utilisez 1 quête gratuite (préciser si
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            ou
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            ).
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>
+            Quêtes
+            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            gratuites
+          </h2>
+          <p>
+            Les quêtes
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            peuvent être obtenues tous les 8000xp contribués dans une quête.
+          </p>
+          <p>
+            <% players.sort((a, b)=> b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
+                <% if (players[i].goldQuest> 0) { %>
+                  <%= players[i].username %> : <%= players[i].goldQuest %>
+                      <br />
+                      <% } %>
+                        <% } %>
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>
+            Quêtes
+            <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            gratuites
+          </h2>
+          <p>
+            Les quêtes
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            peuvent être obtenues de deux manières différentes :
             <br />
-          <% } %>
-        <% } %>
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>
-        Quêtes
-        <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        gratuites
-      </h2>
-      <p>
-        Les quêtes
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        peuvent être obtenues de deux manières différentes :
-        <br />
-        La première en échangeant 5 quêtes
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        gratuites.
-        <br />
-        La deuxième en ayant contribué 100000xp dans le clan (vous choisissez entre cette récompense ou d'autres récompenses).
-      </p>
-      <p>
-        <% players.sort((a, b) => b.gemQuest - a.gemQuest);
-          for (let i = 0; i < players.length; i++) { %>
-          <% if (players[i].gemQuest > 0) { %>
-            <%= players[i].username %> : <%= players[i].gemQuest %>
+            La première en échangeant 5 quêtes
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            gratuites.
             <br />
-          <% } %>
-        <% } %>
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>
-        Personne pouvant échanger 5 quêtes
-        <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        contre 1 quête
-        <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-      </h2>
-      <p>
-        Le nombre affiche le nombre de quête
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        gratuite et non le nombre d'échange possible !
-        <br />
-        Pour échanger, faites un don de 1
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        au clan en mettant comme raison que vous échanger vos quêtes
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        en 
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />.
-      </p>
-      <p>
-        <% players.sort((a, b) => b.goldQuest - a.goldQuest);
-        for (let i = 0; i < players.length; i++) { %>
-          <% if (players[i].goldQuest >= 5) { %>
-            <%= players[i].username %> : <%= players[i].goldQuest %>
+            La deuxième en ayant contribué 100 000xp dans le clan (vous choisissez entre cette récompense ou d'autres
+            récompenses).
+          </p>
+          <p>
+            <% players.sort((a, b)=> b.gemQuest - a.gemQuest);
+              for (let i = 0; i < players.length; i++) { %>
+                <% if (players[i].gemQuest> 0) { %>
+                  <%= players[i].username %> : <%= players[i].gemQuest %>
+                      <br />
+                      <% } %>
+                        <% } %>
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>
+            Personne pouvant échanger 5 quêtes
+            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            contre 1 quête
+            <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+          </h2>
+          <p>
+            Le nombre affiche le nombre de quête
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            gratuite et non le nombre d'échange possible !
             <br />
-          <% } %>
-        <% } %>
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>
-        Quête à 600 ou 800
-        <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-      </h2>
-      <p>
-        Les personnes faisant moins de 1000xp dans une quête doivent payer leur prochaine quête plus chère, elles doivent payer 600
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        à la place de 400
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-        <br />
-        Pareil pour les personnes faisant moins de 300xp, elles doivent payer 800
-        <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />.
-      </p>
-      <p>
-        Babatricks (600)
-        <br />
-        Charlotte123 (800)
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Dettes</h2>
-      <p>
-        Vu que les 
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        sont compliquées à avoir, il y a des dettes pour les personnes qui donnent pas assez pour une quête
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-        <br />
-        Nous n'autorisons plus les dons en dessous des tarifs pour participer à une quête.
-      </p>
-      <p>
-        ninaa_: 5 
-        <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-      </p>
-    </section>
-    <%- include('partials/return') %>
-  </main>
-  <%- include('partials/footer') %>
-  <script src="scripts/script.js"></script>
+            Pour échanger, faites un don de 1
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            au clan en mettant comme raison que vous échanger vos quêtes
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            en
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />.
+          </p>
+          <p>
+            <% players.sort((a, b)=> b.goldQuest - a.goldQuest);
+              for (let i = 0; i < players.length; i++) { %>
+                <% if (players[i].goldQuest>= 5) { %>
+                  <%= players[i].username %> : <%= players[i].goldQuest %>
+                      <br />
+                      <% } %>
+                        <% } %>
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>
+            Quête à 600 ou 800
+            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+          </h2>
+          <p>
+            Les personnes faisant moins de 1000xp dans une quête doivent payer leur prochaine quête plus chère, elles
+            doivent payer 600
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            à la place de 400
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            <br />
+            Pareil pour les personnes faisant moins de 300xp, elles doivent payer 800
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />.
+          </p>
+          <p>
+            Babatricks (600)
+            <br />
+            Charlotte123 (800)
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>Dettes</h2>
+          <p>
+            Vu que les
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            sont compliquées à avoir, il y a des dettes pour les personnes qui donnent pas assez pour une quête
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+            <br />
+            Nous n'autorisons plus les dons en dessous des tarifs pour participer à une quête.
+          </p>
+          <p>
+            ninaa_: 5
+            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
+          </p>
+        </section>
+        <%- include('partials/return') %>
+    </main>
+    <%- include('partials/footer') %>
+      <script src="scripts/script.js"></script>
 
 </body>
 
