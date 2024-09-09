@@ -206,10 +206,10 @@ async function updateQuest(username, questType, amount) {
 }
 
 app.get('/', (req, res) => {
-  let srcImg = "images/enattente.jpeg";
+  let srcImg = "images/enattente.jpg";
   let participantsData = [];
   let date = "Aucune quête en cours.";
-  let srcImgNext = "images/enattente.jpeg";
+  let srcImgNext = "images/enattente.jpg";
   let nextParticipants = [];
   let dayNextQuest = "";
   let currency = ['or', 'https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png'];

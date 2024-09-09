@@ -24,7 +24,7 @@
         <section class="border reveal">
           <h2>Prochaine quête</h2>
           <img class="skin" src="<%= srcImgNext %>" />
-          <% if (srcImgNext !="images/enattente.jpeg" ) { %>
+          <% if (srcImgNext !="images/enattente.jpg" ) { %>
             <p>
               La prochaine quête sera une quête <img class="<%= currency[0] %>" src="<%= currency[1] %>" />
               <br />
@@ -49,12 +49,12 @@
           <img class="skin" src="<%= srcImg %>" />
           <p>
             <%= date %>
-              <% if (srcImg !="images/enattente.jpeg" ) { %>
+              <% if (srcImg !="images/enattente.jpg" ) { %>
                 <br />
                 Il n'y a pas d'évènement lors de cette quête.
                 <% } %>
           </p>
-          <% if (srcImg !="images/enattente.jpeg" ) { %>
+          <% if (srcImg !="images/enattente.jpg" ) { %>
             <p>Participants :</p>
             <p>
               <% for (let j=0; j < participantsData.length; j++) { %>
