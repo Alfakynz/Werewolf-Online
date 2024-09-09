@@ -2,14 +2,15 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 const { setDoc, getDoc, getDocs, collection, updateDoc, deleteDoc, doc, writeBatch, query, where } = require('firebase/firestore');
-const { db, users } = require('./firebaseConfig');
+const { db, users } = require('../firebaseConfig.js');
 require('dotenv').config();
 
 //Appel du bot lorsqu'on execute ce ficher
-const bot = require('./bot.js');
+const bot = require('../bot.js');
 bot.start();
 
 const apiFire = process.env['APIFIRE'];
@@ -40,6 +41,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('views'));
@@ -577,5 +579,5 @@ app.post('/search', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Serveur en cours d'exécution sur le port ${port}\n`);
+  console.log(`Serveur en cours d'exécution sur le port http://localhost:${port}\n`);
 });

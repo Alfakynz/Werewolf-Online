@@ -21,7 +21,8 @@
     "fastify": "^4.28.1",
     "firebase": "^10.13.1",
     "handlebars": "^4.7.8",
-    "npm": "^10.8.3"
+    "npm": "^10.8.3",
+    "path": "^0.12.7"
   },
   "engines": {
     "node": "20.x"
