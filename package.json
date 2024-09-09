@@ -1,15 +1,12 @@
 {
-  "name": "glitch-hello-node",
-  "version": "0.1.0",
-  "description": "Werewolf Online website",
-  "main": "index.js",
+  "name": "werewolf-online",
+  "version": "1.0.0",
+  "description": "Werewolf Online's website",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node api/index.js"
   },
   "dependencies": {
-    "@fastify/formbody": "^7.4.0",
-    "@fastify/static": "^7.0.4",
-    "@fastify/view": "^9.1.0",
     "@types/node": "^22.5.2",
     "axios": "^1.7.7",
     "body-parser": "^1.20.2",
@@ -18,10 +15,8 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
-    "fastify": "^4.28.1",
     "firebase": "^10.13.1",
     "handlebars": "^4.7.8",
-    "npm": "^10.8.3",
     "path": "^0.12.7"
   },
   "engines": {
