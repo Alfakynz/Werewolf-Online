@@ -241,12 +241,13 @@ app.get('/', (req, res) => {
     participantsData.sort((a, b) => b.xp - a.xp);
   }).catch(error => {
     console.log("Une erreur s'est produite lors de la requête pour les quêtes actives.");
-
   }).then(() => {
-    // Requête pour les annonces
-    return axios.get(`https://api.wolvesville.com/clans/${clanId}/announcements`, {
-      headers: headers
-    });
+    if (!actualQuestId) {
+      // Requête pour les annonces (si aucune quête active n'est trouvée)
+      return axios.get(`https://api.wolvesville.com/clans/${clanId}/announcements`, {
+        headers: headers
+      });
+    }
   }).then(response => {
     const responseData = response.data;
     let count = 0;
