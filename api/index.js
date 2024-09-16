@@ -396,7 +396,7 @@ app.get('/questionnaire', (req, res) => {
   res.render('questionnaire', { pseudo: false });
 });
 
-app.get('/quete', async (req, res) => {
+app.get('/quetes', async (req, res) => {
   try {
     const response = await axios.get(`https://api.wolvesville.com/clans/${clanId}/quests/history`, {
       headers: headers
@@ -439,7 +439,7 @@ app.get('/quete', async (req, res) => {
     const playersSnapshot = await getDocs(playersRef);
     const playersArray = playersSnapshot.docs.map(doc => doc.data());
 
-    res.render("quete", { players: playersArray });
+    res.render("quetes", { players: playersArray });
   } catch (error) {
     console.log("An error occurred:", error);
     res.status(500).send("An error occurred while processing the quest.");

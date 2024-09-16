@@ -10,6 +10,12 @@
     <option value="search">Chercher quelqu'un</option>
     <option value="infos">Informations</option>
     <option value="copy-annonce">Copier l'annonce de la quête</option>
+    <% if (currentPage=='note' ) { %>
+      <option value="note">Note</option>
+      <% } %>
+        <% if (currentPage=='admin' ) { %>
+          <option value="admin">Administrateur</option>
+          <% } %>
   </select>
 </section>
 
@@ -24,7 +30,7 @@
       window.location.href = "/regles";
     }
     else if (optnMenu == "quetes") {
-      window.location.href = "/quete"
+      window.location.href = "/quetes"
     }
     else if (optnMenu == "recompenses") {
       window.location.href = "/recompenses";
@@ -48,7 +54,7 @@
       window.location.href = "/search";
     }
   }
-  
+
   // Pour pré-sélectionner l'option correspondant à la page actuelle
   document.addEventListener('DOMContentLoaded', (event) => {
     const currentPage = '<%= currentPage %>';
