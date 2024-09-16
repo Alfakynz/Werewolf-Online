@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <%- include('partials/head', { title: "Administrateur" }) %>
+</head>
+
+<body>
+    <%- include('partials/header', { title: "Administrateur" }) %>
+        <main>
+            <%- include('partials/menu', { currentPage: 'admin' }) %>
+                <% if (isAdmin) { %>
+                    <section class="border reveal">
+                        <h2>Modifier le nombre de quête</h2>
+                        <form action='/modifyQuests' method="post">
+                            <select name='username'>
+                                <option selected disabled value=''>Joueur</option>
+                                <% for(let i=0; i < players.length; i++) { %>
+                                    <option value=<%=players[i].username %>>
+                                        <%= players[i].username %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                            <br /><br />
+                            <label>Quête or</label>
+                            <input type='number' name='gold' value='' />
+                            <br /><br />
+                            <label>Quête gemme</label>
+                            <input type='number' name='gems' value='' />
+                            <br /><br />
+                            <button type='submit'>Modifier</button>
+                            <br /><br />
+                        </form>
+                    </section>
+                    <% } else { %>
+                        <section class='border'>
+                            <h2>Mot de passe admin</h2>
+                            <form action='/admin' method='post'>
+                                <input type='password' placeholder='Mot de passe' name='testAdminPassword' value='' />
+                                <br /><br />
+                                <button type='submit'>Se connecter</button>
+                            </form>
+                            <br />
+                        </section>
+                        <% } %>
+                            <%- include('partials/return') %>
+        </main>
+        <%- include('partials/footer') %>
+            <script src="scripts/script.js"></script>
+            <script>
+                const players = <%- JSON.stringify(players) %>
+
+                    document.querySelector("select[name='username']").addEventListener("change", function () {
+                        const selectedUsername = this.value;
+                        const player = players.find(p => p.username === selectedUsername);
+
+                        if (player) {
+                            document.querySelector("input[name='gold']").value = player.goldQuest || 0;
+                            document.querySelector("input[name='gems']").value = player.gemQuest || 0;
+                        }
+                    });
+            </script>
+
+</body>
+
+</html>

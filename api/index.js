@@ -15,6 +15,7 @@ bot.start();
 
 const apiFire = process.env['APIFIRE'];
 const apiVal = process.env['APIVAL'];
+const adminPassword = process.env['adminPassword'];
 const response1 = process.env['Question1'];
 const response2 = process.env['Question2'];
 const response3 = process.env['Question3'];
@@ -353,6 +354,13 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/admin', async (req, res) => {
+  res.render('admin', {
+    players: [],
+    isAdmin: false
+  });
+});
+
 app.get('/annonce', async (req, res) => {
   const playersRef = collection(db, 'players');
 
@@ -444,6 +452,83 @@ app.get('/recompenses', (req, res) => {
 
 app.get('/regles', (req, res) => {
   res.render('regles');
+});
+
+app.post('/admin', async (req, res) => {
+  const testAdminPassword = req.body.testAdminPassword;
+  if (testAdminPassword == adminPassword) {
+    const playersRef = collection(db, 'players');
+
+    try {
+      const snapshot = await getDocs(playersRef);
+
+      if (!snapshot.empty) {
+        var players = snapshot.docs ? snapshot.docs.map(doc => doc.data()) : [];
+        res.render('admin', {
+          players: players,
+          isAdmin: true
+        });
+      } else {
+        console.log("No data available");
+        res.render('admin', {
+          players: [],
+          isAdmin: true
+        });
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des joueurs :', error);
+      res.render('admin', {
+        players: [],
+        isAdmin: true
+      });
+    }
+  }
+  else {
+    res.render('admin', {
+      players: [],
+      isAdmin: false
+    });
+  }
+});
+
+app.post('/modifyQuests', async (req, res) => {
+  const username = req.body.username
+  const newGoldQuest = req.body.gold
+  const newGemsQuest = req.body.gems
+  console.log(`${username} : ${newGoldQuest} : ${newGemsQuest}`)
+  if (username != '') {
+    if (newGoldQuest != 'none') {
+      updateQuest(username, 'goldQuest', parseInt(newGoldQuest))
+    }
+    if (newGemsQuest != 'none') {
+      updateQuest(username, 'gemQuest', parseInt(newGemsQuest))
+    }
+    const playersRef = collection(db, 'players');
+
+    try {
+      const snapshot = await getDocs(playersRef);
+
+      if (!snapshot.empty) {
+        var players = snapshot.docs ? snapshot.docs.map(doc => doc.data()) : [];
+        res.render('admin', {
+          players: players,
+          isAdmin: true
+        });
+      } else {
+        console.log("No data available");
+        res.render('admin', {
+          players: [],
+          isAdmin: true
+        });
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération des joueurs :', error);
+      res.render('admin', {
+        players: [],
+        isAdmin: true
+      });
+    }
+  }
 });
 
 app.post('/questionnaire', async (req, res) => {
