@@ -1,0 +1,346 @@
+@charset "UTF-8";
+:root {
+  --section-width: 100%;
+  --link-width: 2.25em;
+  --return-width: 2.25em;
+  --input-margin: 25%;
+  --details-width: 75%;
+  --p-margin: 15px;
+}
+
+/* CSS pour téléphone */
+@media screen and (max-width: 767px) {
+  :root {
+    --section-width: 100%;
+    --link-width: 2.25em;
+    --return-width: 2.25em;
+    --input-margin: 25%;
+    --details-width: 75%;
+    --p-margin: 15px;
+  }
+}
+/* CSS pour tablette */
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  :root {
+    --section-width: 90%;
+    --link-width: 2.75em;
+    --return-width: 2.75em;
+    --input-margin: 35%;
+    --details-width: 65%;
+    --p-margin: 25px;
+  }
+}
+/* CSS pour ordinateur */
+@media screen and (min-width: 1024px) {
+  :root {
+    --section-width: 75%;
+    --link-width: 3.25em;
+    --return-width: 3.25em;
+    --input-margin: 40%;
+    --details-width: 50%;
+    --p-margin: 35px;
+  }
+}
+html {
+  width: 100%;
+  height: 100%;
+  background-color: #230054;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  font-family: "San Francisco", sans-serif;
+}
+
+body {
+  display: block;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  padding-bottom: 75px;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  margin-inline: 10px;
+}
+
+/* Logo discord/insta */
+footer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  width: auto;
+  height: auto;
+  padding: 0;
+  position: fixed;
+  top: 14%;
+  left: 2.5%;
+}
+footer a > img {
+  background-color: transparent;
+}
+footer a.discord > img {
+  transition: filter 250ms ease;
+}
+footer a.discord > img:hover {
+  filter: drop-shadow(0 0 10px #657fd2);
+}
+footer a.insta > img {
+  transition: filter 250ms ease;
+}
+footer a.insta > img:hover {
+  filter: drop-shadow(0 0 10px #ff1474);
+}
+
+/* Menu déroulant pour changer de page */
+select {
+  width: 50%;
+  height: 3.5em;
+  background-color: #400099;
+  color: #ffffff;
+  border: solid 1px #100026;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: filter 250ms ease;
+}
+select:hover {
+  filter: drop-shadow(0 0 10px #400099);
+}
+
+a {
+  color: #ffffff;
+}
+
+button {
+  background-color: #400099;
+  color: #ffffff;
+  border: solid 1px #100026;
+  border-radius: 25px;
+  padding: 5px;
+  cursor: pointer;
+  transition: filter 250ms ease;
+}
+button:hover {
+  filter: drop-shadow(0 0 10px #400099);
+}
+
+input {
+  background-color: transparent;
+  color: #ffffff;
+  border: solid 2px #100026;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+section {
+  width: var(--section-width);
+  text-align: center;
+  margin: 15px auto;
+}
+
+p {
+  margin: var(--p-margin);
+}
+
+/* Tableau des prix */
+tr,
+caption {
+  height: 30px;
+}
+
+table,
+th,
+td {
+  border: 2px solid #100026;
+  border-collapse: collapse;
+}
+
+caption {
+  border-top: 2px solid #100026;
+  border-right: 2px solid #100026;
+  border-left: 2px solid #100026;
+  border-collapse: collapse;
+  font-size: 22px;
+  font-weight: bold;
+  padding-top: 4px;
+}
+
+table {
+  margin: auto;
+  width: 100%;
+  height: 150px;
+}
+
+details {
+  margin: 0 auto;
+  font-size: auto;
+  width: var(--details-width);
+}
+
+summary {
+  background-color: #400099;
+  color: #ffffff;
+  padding: 0 10px;
+  border: solid 1px #100026;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.border {
+  border: solid 2px #100026;
+  border-radius: 7px;
+}
+
+/* Événement en cours et passé dans la page des events*/
+.event-permanent {
+  border: solid 2px #ff0000;
+  border-radius: 5px;
+}
+
+.next-event {
+  border: solid 2px #0000ff;
+  border-radius: 5px;
+}
+
+.event {
+  border: solid 2px #ff0000;
+  border-radius: 5px;
+}
+
+.lien {
+  width: var(--link-width);
+}
+
+input[type=radio],
+.p-question14 {
+  margin-left: var(--input-margin);
+  text-align: left;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 5px;
+}
+
+.container-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 5px;
+}
+
+/* Taille des img de roses */
+.roses,
+.or,
+.gem {
+  height: 15px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+/* Taille des img pour les titre h2 */
+.b-cpl,
+.b-vivi,
+.b-lg,
+.b-roses,
+.b-or,
+.b-gem {
+  height: 25px;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
+
+/* La flèche qui remet en haut de la page */
+.return {
+  position: fixed;
+  left: 5%;
+  bottom: 5%;
+  width: var(--return-width);
+  height: var(--return-width);
+  border: solid 1px #100026;
+  border-radius: 25px;
+  background-color: #400099;
+  transition: filter 250ms ease;
+}
+.return:hover {
+  filter: drop-shadow(0 0 10px #400099);
+}
+.return .returnLogo {
+  width: 100%;
+}
+
+/* Cercle bleu dans la page items */
+.blueCircle {
+  color: white;
+  background-color: #03bcff;
+  border-radius: 50px;
+  border: solid 1px white;
+  padding: 0px 7px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.first {
+  border-radius: 10px 10px 0 0;
+}
+
+.last {
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 15px;
+}
+
+/* reveal du scroll*/
+.reveal {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skin {
+  width: 50%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.searchForm {
+  margin-bottom: 15px;
+}
+
+.skin-player {
+  width: 33%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.roleCard {
+  height: auto;
+  margin: 10px auto;
+}
+
+.summary {
+  padding: 3px 0;
+  width: 50%;
+  border-radius: 8px 8px 2px 2px;
+  margin-inline: auto;
+}
+
+/*# sourceMappingURL=style.css.map */

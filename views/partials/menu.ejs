@@ -20,38 +20,57 @@
 </section>
 
 <script>
-  // Rediriger la page avec select
+  // Retirer la classe fade-in
+  function removeFadeInClasses() {
+    const elementsWithFadeIn = document.querySelectorAll('.fade-in');
+    elementsWithFadeIn.forEach((element) => {
+      element.classList.remove('fade-in');
+    });
+  }
+
+  // Redirection de la page
+  function redirect(location) {
+    removeFadeInClasses();
+    setTimeout(function () {
+      window.location.href = location;
+    }, 250);
+  }
+
+  // Gestion des redirections
   function redirection() {
     var optnMenu = document.getElementById("menu").value;
-    if (optnMenu == "accueil") {
-      window.location.href = "/";
-    }
-    else if (optnMenu == "regles") {
-      window.location.href = "/regles";
-    }
-    else if (optnMenu == "quetes") {
-      window.location.href = "/quetes"
-    }
-    else if (optnMenu == "recompenses") {
-      window.location.href = "/recompenses";
-    }
-    else if (optnMenu == "events") {
-      window.location.href = "/events";
-    }
-    else if (optnMenu == "items") {
-      window.location.href = "/items";
-    }
-    else if (optnMenu == "questionnaire") {
-      window.location.href = "/questionnaire";
-    }
-    else if (optnMenu == "infos") {
-      window.location.href = "/informations";
-    }
-    else if (optnMenu == "copy-annonce") {
-      window.location.href = "/annonce";
-    }
-    else if (optnMenu == "search") {
-      window.location.href = "/search";
+    switch (optnMenu) {
+      case "accueil":
+        redirect("/");
+        //window.location.href = "/";
+        break;
+      case "regles":
+        redirect("/regles");
+        break;
+      case "quetes":
+        redirect("/quetes");
+        break;
+      case "recompenses":
+        redirect("/recompenses");
+        break;
+      case "events":
+        redirect("/events");
+        break;
+      case "items":
+        redirect("/items");
+        break;
+      case "questionnaire":
+        redirect("/questionnaire");
+        break;
+      case "infos":
+        redirect("/informations");
+        break;
+      case "copy-annonce":
+        redirect("/annonce");
+        break;
+      case "search":
+        redirect("/search");
+        break;
     }
   }
 

@@ -5,7 +5,6 @@
   "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
-    "build": "sass views/css/style.scss views/css/style.css",
     "compile:sass": "sass --watch views/css/style.scss views/css/style.css"
   },
   "dependencies": {

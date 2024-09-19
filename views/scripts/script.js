@@ -1,14 +1,13 @@
 // Copier du texte
 function copyText(text) {
   var textToCopy = text;
-  navigator.clipboard.writeText(textToCopy).then(function() {
+  navigator.clipboard.writeText(textToCopy).then(function () {
     alert('Le texte ' + '"' + textToCopy + '"' + ' a été copié!');
   })
 }
 
 /*-------------------------------------*/
 // Reveal au scroll
-// Fonction qui sera exécutée lorsque l'élément entre dans la vue
 function revealElement(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting && !entry.target.classList.contains('fade-in')) {
@@ -18,13 +17,12 @@ function revealElement(entries, observer) {
   });
 }
 
-// Sélectionnez tous les éléments avec la classe "reveal"
 const elementsToAnimate = document.querySelectorAll('.reveal');
 
 // Options pour l'observateur
 const options = {
   root: null, // La racine par défaut est la fenêtre visible
-  threshold: 0.40, // Le seuil de visibilité de 25%
+  threshold: 0.4, // Le seuil de visibilité
 };
 
 // Créer un nouvel observateur pour chaque élément
@@ -42,7 +40,7 @@ function getSelectedOption(radioName) {
       return radios[i].value;
     }
   }
-  return null; // Retourne null si aucune option n'est sélectionnée
+  return null;
 }
 
 /*-------------------------------------*/
@@ -58,7 +56,7 @@ function copyAnnonce() {
 
   var annonceToCopy = '🏆PROCHAINE QUÊTE🏆' + dataQuest + ' à 20h\nOn fera la quête ' + infoForm.number + '\nPour participer donnez ' + infoForm.type + ' au clan.';
 
-  navigator.clipboard.writeText(annonceToCopy).then(function() {
+  navigator.clipboard.writeText(annonceToCopy).then(function () {
     alert('Le texte ' + '\n\n' + annonceToCopy + '\n\n' + ' a été copié!');
   });
 }
