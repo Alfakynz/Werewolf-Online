@@ -4,7 +4,9 @@
   "description": "Werewolf Online's website",
   "main": "api/index.js",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "node api/index.js",
+    "build": "sass views/css/style.scss views/css/style.css",
+    "compile:sass": "sass --watch views/css/style.scss views/css/style.css"
   },
   "dependencies": {
     "@types/node": "^22.5.2",
@@ -25,5 +27,8 @@
   "keywords": [
     "node"
   ],
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.67.0"
+  }
 }
