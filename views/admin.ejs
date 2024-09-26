@@ -60,26 +60,6 @@
                         }
                     });
             </script>
-        <section class="border reveal">
-          <h2>
-            Quêtes
-            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            gratuites
-          </h2>
-          <p>
-            Les quêtes
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            peuvent être obtenues tous les 8000xp contribués dans une quête.
-          </p>
-          <p>
-            <% players.sort((a, b)=> b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
-                <% if (players[i].goldQuest> 0) { %>
-                  <%= players[i].username %> : <%= players[i].goldQuest %>
-                      <br />
-                      <% } %>
-                        <% } %>
-          </p>
-        </section>
 
 </body>
 
