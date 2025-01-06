@@ -343,4 +343,10 @@ input[type=radio],
   margin-inline: auto;
 }
 
+#classements summary {
+  height: 25px;
+  display: flex;
+  align-items: center;
+}
+
 /*# sourceMappingURL=style.css.map */

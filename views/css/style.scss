@@ -346,3 +346,11 @@ input[type=radio],
     border-radius: 8px 8px 2px 2px;
     margin-inline: auto;
 }
+
+#classements {
+    summary {
+        height: 25px;
+        display: flex;
+        align-items: center;
+    }
+}

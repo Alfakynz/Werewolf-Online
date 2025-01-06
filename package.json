@@ -5,7 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "start": "node api/index.js",
-    "compile:sass": "sass --watch views/css/style.scss views/css/style.css"
+    "sass": "sass --watch views/css/style.scss views/css/style.css"
   },
   "dependencies": {
     "axios": "^1.7.7",
