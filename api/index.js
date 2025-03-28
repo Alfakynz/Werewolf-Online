@@ -593,7 +593,7 @@ app.post('/questionnaire', async (req, res) => {
         }
       }
 
-      messageToClan += `${pseudo} : `+`${correctAnswers}/15`;
+      messageToClan += `${correctAnswers}/15`;
 
       // Envoyer le message au clan de test API via l'API Wolvesville
       await fetch(`https://api.wolvesville.com/clans/${clanIdAPI}/chat`, {
@@ -602,7 +602,7 @@ app.post('/questionnaire', async (req, res) => {
         body: JSON.stringify({ "message": messageToClan })
       });
       // Envoyer directement un message au clan Werewolf sans quelles réponses sont correctes
-      messagetoclanwerewolf = `${correctAnswers}/15`;
+      messagetoclanwerewolf = `${pseudo} : `+`${correctAnswers}/15`;
       await fetch(`https://api.wolvesville.com/clans/28f85d51-37b1-4fc6-a938-47656353363c/chat`, {
         method: 'POST',
         headers: headers,
