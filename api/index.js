@@ -593,7 +593,7 @@ app.post('/questionnaire', async (req, res) => {
         }
       }
 
-      messageToClan += `${correctAnswers}/15`;
+      messageToClan += `${pseudo} : `+`${correctAnswers}/15`;
 
       // Envoyer le message au clan de test API via l'API Wolvesville
       await fetch(`https://api.wolvesville.com/clans/${clanIdAPI}/chat`, {
