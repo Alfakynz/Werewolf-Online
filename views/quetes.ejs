@@ -29,6 +29,8 @@
             temps, pour cela prévenez nous pour qu’on vous mette dans la liste.
             <br />
             Il peut y avoir un événement pendant une quête.
+            <br />
+            ATTENTION, si vous votez une quête, vous devez y PARTICIPER, sinon vous aurez un MALUS (plus d'information plus bas).
           </p>
           <p>
             <a href="/events">En savoir plus sur les événements</a>
@@ -78,12 +80,6 @@
             2 mois.
             <br />
             Si beaucoup d'inscrit pendant 1 quête c'est possible qu'on puisse en faire que 2.
-            <br />
-            Il est possible d'échanger 5 quêtes
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            gratuite contre 1 quête
-            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-            gratuite.
           </p>
         </section>
         <section class="border reveal">
@@ -91,11 +87,7 @@
           <p>
             Faites un don de 1
             <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            au clan en mettant comme raison que vous utilisez 1 quête gratuite (préciser si
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            ou
-            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-            ).
+            au clan en mettant comme raison que vous utilisez 1 quête gratuite.
           </p>
         </section>
         <section class="border reveal">
@@ -108,6 +100,8 @@
             Les quêtes
             <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
             peuvent être obtenues tous les 8000xp contribués dans une quête.
+            <br />
+            Les quêtes si dessous ne sont pas forcement à jour, merci de regarder les annonces du clan pour voir les véritables quêtes gratuites.
           </p>
           <p>
             <% players.sort((a, b)=> b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
@@ -120,80 +114,18 @@
         </section>
         <section class="border reveal">
           <h2>
-            Quêtes
-            <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-            gratuites
-          </h2>
-          <p>
-            Les quêtes
-            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-            peuvent être obtenues de deux manières différentes :
-            <br />
-            La première en échangeant 5 quêtes
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            gratuites.
-            <br />
-            La deuxième en ayant contribué 100 000xp dans le clan (vous choisissez entre cette récompense ou d'autres
-            récompenses).
-          </p>
-          <p>
-            <% players.sort((a, b)=> b.gemQuest - a.gemQuest);
-              for (let i = 0; i < players.length; i++) { %>
-                <% if (players[i].gemQuest> 0) { %>
-                  <%= players[i].username %> : <%= players[i].gemQuest %>
-                      <br />
-                      <% } %>
-                        <% } %>
-          </p>
-        </section>
-        <section class="border reveal">
-          <h2>
-            Personne pouvant échanger 5 quêtes
-            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            contre 1 quête
-            <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
-          </h2>
-          <p>
-            Le nombre affiche le nombre de quête
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            gratuite et non le nombre d'échange possible !
-            <br />
-            Pour échanger, faites un don de 1
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            au clan en mettant comme raison que vous échanger vos quêtes
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            en
-            <img class="gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />.
-          </p>
-          <p>
-            <% players.sort((a, b)=> b.goldQuest - a.goldQuest);
-              for (let i = 0; i < players.length; i++) { %>
-                <% if (players[i].goldQuest>= 5) { %>
-                  <%= players[i].username %> : <%= players[i].goldQuest %>
-                      <br />
-                      <% } %>
-                        <% } %>
-          </p>
-        </section>
-        <section class="border reveal">
-          <h2>
-            Quête à 600 ou 800
+            Malus 
             <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
           </h2>
           <p>
-            Les personnes faisant moins de 1000xp dans une quête doivent payer leur prochaine quête plus chère, elles
-            doivent payer 600
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            à la place de 400
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            Les personnes faisant moins de 1000xp dans une quête auront un malus, tous les malus peuvent se cumuler.
             <br />
-            Pareil pour les personnes faisant moins de 300xp, elles doivent payer 800
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />.
+            Pour chaque malus, vous devrez payer 400 
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            de plus votre quête.
           </p>
           <p>
-            Babatricks (600)
-            <br />
-            Charlotte123 (800)
+            Veuillez regarder les annonces du clan pour connaître les malus.
           </p>
         </section>
         <section class="border reveal">
