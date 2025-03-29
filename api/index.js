@@ -706,7 +706,7 @@ app.post('/search', (req, res) => {
       bio: "Joueur non trouvé (" + username.username + ")", 
       dateCompte: "", 
       dateOnline: "",
-      searchClanName: null
+      searchClanName: { name: "Aucun clan"}
     });
   });
 });
