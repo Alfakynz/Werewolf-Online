@@ -656,6 +656,7 @@ app.post('/search', (req, res) => {
     const nouvelleExtension = "@3x.png";
     const srcImg = responseData.equippedAvatar.url.replace(".png", nouvelleExtension);
     const personalMsg = responseData.personalMessage;
+    const searchClanID = responseData.clanId;
     const bio = personalMsg.split("\n");
     let [yearCompte, monthCompte, dayCompte, timeCompte] = responseData.creationTime.split(/[-T:.Z]/);
     timeCompte = Number(timeCompte) + 1;
@@ -663,11 +664,53 @@ app.post('/search', (req, res) => {
     let [yearOnline, monthOnline, dayOnline, timeOnline] = responseData.lastOnline.split(/[-T:.Z]/);
     timeOnline = Number(timeOnline) + 1;
     const dateOnline = dayOnline + "/" + monthOnline + "/" + yearOnline + " à " + timeOnline + "h";
-    res.render('search', { player: responseData, srcImg: srcImg, bio: bio, dateCompte: dateCompte, dateOnline: dateOnline });
+
+    // Vérifier si le joueur a un clan
+    if (searchClanID) {
+      axios.get(`https://api.wolvesville.com/clans/${searchClanID}/info`, {
+        headers: headers
+      }).then(clanResponse => {
+        const clanData = clanResponse.data;
+        res.render('search', { 
+          player: responseData, 
+          srcImg: srcImg, 
+          bio: bio, 
+          dateCompte: dateCompte, 
+          dateOnline: dateOnline,
+          searchClanName: clanData 
+        });
+      }).catch(error => {
+        res.render('search', { 
+          player: responseData, 
+          srcImg: srcImg, 
+          bio: bio, 
+          dateCompte: dateCompte, 
+          dateOnline: dateOnline,
+          searchClanName: { name: "Clan introuvable", description: "Aucune info disponible" } 
+        });
+      });
+    } else {
+      res.render('search', { 
+        player: responseData, 
+        srcImg: srcImg, 
+        bio: bio, 
+        dateCompte: dateCompte, 
+        dateOnline: dateOnline,
+        searchClanName: { name: "Aucun clan", description: "Ce joueur n'a pas de clan" } 
+      });
+    }
   }).catch(error => {
-    res.render('search', { player: false, srcImg: "", bio: "Joueur non trouvé (" + username.username + ")", dateCompte: "", dateOnline: "" });
+    res.render('search', { 
+      player: false, 
+      srcImg: "", 
+      bio: "Joueur non trouvé (" + username.username + ")", 
+      dateCompte: "", 
+      dateOnline: "",
+      searchClanName: null
+    });
   });
 });
+
 
 app.listen(port, () => {
   console.log(`Serveur en cours d'exécution sur le port http://localhost:${port}\n`);
