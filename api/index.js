@@ -677,7 +677,7 @@ app.post('/search', (req, res) => {
           bio: bio, 
           dateCompte: dateCompte, 
           dateOnline: dateOnline,
-          searchClanName: clanData 
+          searchClanName: clanData.name 
         });
       }).catch(error => {
         res.render('search', { 
@@ -686,7 +686,7 @@ app.post('/search', (req, res) => {
           bio: bio, 
           dateCompte: dateCompte, 
           dateOnline: dateOnline,
-          searchClanName: { name: "Clan introuvable", description: "Aucune info disponible" } 
+          searchClanName: { name: "Clan introuvable"} 
         });
       });
     } else {
@@ -696,7 +696,7 @@ app.post('/search', (req, res) => {
         bio: bio, 
         dateCompte: dateCompte, 
         dateOnline: dateOnline,
-        searchClanName: { name: "Aucun clan", description: "Ce joueur n'a pas de clan" } 
+        searchClanName: { name: "Aucun clan"} 
       });
     }
   }).catch(error => {
