@@ -83,6 +83,36 @@
         </section>
         <section class="border reveal">
           <h2>
+            Quêtes
+            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            gratuites
+          </h2>
+          <p>
+            Les quêtes
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            peuvent être obtenues tous les 8000xp contribués dans une quête.
+            <br />
+            Les quêtes si dessous ne sont pas à jour, merci de regarder les annonces du clan pour voir les véritables quêtes gratuites.
+          </p>
+          <p>
+            <% players.sort((a, b)=> b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
+                <% if (players[i].goldQuest> 0) { %>
+                  <%= players[i].username %> : <%= players[i].goldQuest %>
+                      <br />
+                      <% } %>
+                        <% } %>
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>Comment utiliser les quêtes gratuites?</h2>
+          <p>
+            Faites un don de 1
+            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
+            au clan en mettant comme raison que vous utilisez 1 quête gratuite.
+          </p>
+        </section>
+        <section class="border reveal">
+          <h2>
             Précision pour les quêtes
             <img class="b-gem" src="https://cdn.wolvesville.com/challenges/icons/challenge-gems@2x.png" />
           </h2>
@@ -98,36 +128,6 @@
             2 mois.
             <br />
             Si beaucoup d'inscrit pendant 1 quête c'est possible qu'on puisse en faire que 2.
-          </p>
-        </section>
-        <section class="border reveal">
-          <h2>Comment utiliser les quêtes gratuites?</h2>
-          <p>
-            Faites un don de 1
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            au clan en mettant comme raison que vous utilisez 1 quête gratuite.
-          </p>
-        </section>
-        <section class="border reveal">
-          <h2>
-            Quêtes
-            <img class="b-or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            gratuites
-          </h2>
-          <p>
-            Les quêtes
-            <img class="or" src="https://www.wolvesville.com/static/media/silver_coin.7b12538367a6d2cfa2c0.png" />
-            peuvent être obtenues tous les 8000xp contribués dans une quête.
-            <br />
-            Les quêtes si dessous ne sont pas forcement à jour, merci de regarder les annonces du clan pour voir les véritables quêtes gratuites.
-          </p>
-          <p>
-            <% players.sort((a, b)=> b.goldQuest - a.goldQuest); for (let i = 0; i < players.length; i++) { %>
-                <% if (players[i].goldQuest> 0) { %>
-                  <%= players[i].username %> : <%= players[i].goldQuest %>
-                      <br />
-                      <% } %>
-                        <% } %>
           </p>
         </section>
         <section class="border reveal">
