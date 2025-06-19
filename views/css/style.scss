@@ -1,6 +1,8 @@
 $background-color: #230054;
 $button-color: #400099;
 $button-border-color: #100026;
+$discord-color: #5865F2;
+$insta-color: #E1306C;
 
 :root {
     --section-width: 100%;
@@ -95,11 +97,11 @@ footer {
     }
 
     a.discord>img {
-        @include hoverEffect(#657fd2);
+        @include hoverEffect($discord-color);
     }
 
     a.insta>img {
-        @include hoverEffect(#ff1474);
+        @include hoverEffect($insta-color);
     }
 }
 

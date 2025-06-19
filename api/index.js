@@ -9,10 +9,6 @@ const { setDoc, getDoc, getDocs, collection, updateDoc, deleteDoc, doc, writeBat
 const { db, users } = require('../firebaseConfig.js');
 require('dotenv').config();
 
-//Appel du bot lorsqu'on execute ce ficher
-const bot = require('../bot.js');
-bot.start();
-
 const apiFire = process.env['APIFIRE'];
 const apiVal = process.env['APIVAL'];
 const adminPassword = process.env['adminPassword'];
