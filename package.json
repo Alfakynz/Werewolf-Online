@@ -4,6 +4,7 @@
   "description": "Werewolf Online's website",
   "main": "api/index.js",
   "scripts": {
+    "build": "sass --style compressed views/css/style.scss views/css/style.css",
     "start": "node api/index.js",
     "sass": "sass --watch views/css/style.scss views/css/style.css"
   },
