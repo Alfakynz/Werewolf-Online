@@ -2,110 +2,110 @@
 <html lang="fr">
 
 <head>
-  <%- include('partials/head', { title: "Items spéciaux" }) %>
+    <%- include('partials/head', { title: "Items spéciaux" }) %>
 </head>
 
 <body>
-  <%- include('partials/header', { title: "Items spéciaux" }) %>
-  <main>
-    <%- include('partials/menu', { currentPage: 'items' }) %>
-    <section class="border reveal">
-      <h2>Items spéciaux ?</h2>
-      <p>
-        Les items spéciaux sont cachés un peu partout dans le jeu.
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Items cachés dans le tchat d'une partie</h2>
-      <p>
-        Écrivez dans le tchat lors d'une partie :<br />
-        1. "Hello Wolvesville"<br />
-        2. "I love wov"<br />
-        Pour recevoir des items.
-      </p>
-    <button id="copyButton" onclick="copyText('Hello Wolvesville')">Copier 1.</button>
-    <button id="copyButton" onclick="copyText('I love wov')">Copier 2.</button>
-     <br /><br />
-    </section>
-    <section class="border reveal">
-      <h2>Memory</h2>
-      <p>
-        Sur iOS :
-        <br />
-        Cliquez plusieurs fois (trois / quatre fois) en bas de l'écran sur l'écran d'accueil.
-        <br />
-        Réalisez le mini-jeu (memory game)
-        <br />
-        Recevez les lunettes.
-      </p>
-      <p>
-        Ceci n'est pas disponible sur Android et PC
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Items caché FAQ</h2>
-      <p>
-        Cliquez sur le <span class="blueCircle">?</span>
-        <br />
-        Cliquez sur FAQ
-        <br />
-        Affichez tous les textes
-        <br />
-        Cliquez sur le texte rose qui s'est affiché (I know everything!)
-        <br />
-        Faites le quizz
-        <br />
-        Récupérez le chapeau avec l'ampoule
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Succès</h2>
-      <p>
-        Cliquez sur votre profil
-        <br />
-        Cliquez sur succès
-        <br />
-        Chercher le chasseur de tête
-        <br />
-        Cliquer plusieurs fois sur son icône
-        <br />
-        Récupérez la pancarte écris "vote"
-      </p>
-    </section>
-    <section class="border reveal">
-      <h2>Sur ordi:</h2>
-      <p>
-        Connecter vous au jeu sur le site
-        <br />
-        Récupérez les ordis du premier plan
-      </p>
-      <p>
-        Accepter tous les cookies du site
-        <br />
-        Récupérez le premier plan le loup qui mange un cookie
-      </p>
-      <p>
-        Activez les notifications du site
-        <br />
-        Récupérez la tombe qui ressemble à un pc
-      </p>
-      <p>
-        Jouez une partie sur le site
-        <br />
-        Récupérez le masque noir
-      </p>
-      <p>
-        Dites: "I am playing on Wolvesville web" dans une partie
-        <br />
-        Récupérez le chapeau en forme de boite rose
-      </p>
-      <button id="copyButton" onclick="copyText('I am playing on Wolvesville web')">Copier</button>
-      <br /><br />
-    </section>
-    <%- include('partials/return') %>
-  </main>
-  <%- include('partials/footer') %>
-  <script src="scripts/script.js"></script>
+    <%- include('partials/header', { title: "Items spéciaux" }) %>
+    <main>
+        <%- include('partials/menu', { currentPage: 'items' }) %>
+        <section class="border reveal">
+            <h2>Items spéciaux ?</h2>
+            <p>
+                Les items spéciaux sont cachés un peu partout dans le jeu.
+            </p>
+        </section>
+        <section class="border reveal">
+            <h2>Items cachés dans le tchat d'une partie</h2>
+            <p>
+                Écrivez dans le tchat lors d'une partie :<br />
+                1. "Hello Wolvesville"<br />
+                2. "I love wov"<br />
+                Pour recevoir des items.
+            </p>
+            <button id="copyButton" onclick="copyText('Hello Wolvesville')">Copier 1.</button>
+            <button id="copyButton" onclick="copyText('I love wov')">Copier 2.</button>
+            <br /><br />
+        </section>
+        <section class="border reveal">
+            <h2>Memory</h2>
+            <p>
+                Sur iOS :
+                <br />
+                Cliquez plusieurs fois (trois / quatre fois) en bas de l'écran sur l'écran d'accueil.
+                <br />
+                Réalisez le mini-jeu (memory game)
+                <br />
+                Recevez les lunettes.
+            </p>
+            <p>
+                Ceci n'est pas disponible sur Android et PC
+            </p>
+        </section>
+        <section class="border reveal">
+            <h2>Items caché FAQ</h2>
+            <p>
+                Cliquez sur le <span class="blueCircle">?</span>
+                <br />
+                Cliquez sur FAQ
+                <br />
+                Affichez tous les textes
+                <br />
+                Cliquez sur le texte rose qui s'est affiché (I know everything!)
+                <br />
+                Faites le quizz
+                <br />
+                Récupérez le chapeau avec l'ampoule
+            </p>
+        </section>
+        <section class="border reveal">
+            <h2>Succès</h2>
+            <p>
+                Cliquez sur votre profil
+                <br />
+                Cliquez sur succès
+                <br />
+                Chercher le chasseur de tête
+                <br />
+                Cliquer plusieurs fois sur son icône
+                <br />
+                Récupérez la pancarte écris "vote"
+            </p>
+        </section>
+        <section class="border reveal">
+            <h2>Sur ordi:</h2>
+            <p>
+                Connecter vous au jeu sur le site
+                <br />
+                Récupérez les ordis du premier plan
+            </p>
+            <p>
+                Accepter tous les cookies du site
+                <br />
+                Récupérez le premier plan le loup qui mange un cookie
+            </p>
+            <p>
+                Activez les notifications du site
+                <br />
+                Récupérez la tombe qui ressemble à un pc
+            </p>
+            <p>
+                Jouez une partie sur le site
+                <br />
+                Récupérez le masque noir
+            </p>
+            <p>
+                Dites: "I am playing on Wolvesville web" dans une partie
+                <br />
+                Récupérez le chapeau en forme de boite rose
+            </p>
+            <button id="copyButton" onclick="copyText('I am playing on Wolvesville web')">Copier</button>
+            <br /><br />
+        </section>
+        <%- include('partials/return') %>
+    </main>
+    <%- include('partials/footer') %>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
