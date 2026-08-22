@@ -1,0 +1,17 @@
+<template>
+	<footer>
+		<a target="_blank" href="https://discord.com/invite/Yt3hM8Dck2" title="Discord du clan" class="discord">
+			<img class="lien" src="../images/discord.png" />
+		</a>
+		<!--
+    <a
+      target="_blank"
+      href="https://instagram.com/werewolfonline.clan?igshid=NTc4MTIwNjQ2YQ=="
+      title="Insta du clan"
+      class="insta"
+    >
+      <img class="lien" src="../images/insta.png" />
+    </a>
+    -->
+	</footer>
+</template>

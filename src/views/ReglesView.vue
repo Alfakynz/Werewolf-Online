@@ -1,0 +1,93 @@
+<template>
+	<section id="absence" class="border reveal">
+		<h2>Absence et inactivité</h2>
+		<p>
+			Expulsion au bout d'une semaine de non connexion.
+			<br />
+			2000 xp minimum par semaine, vérification tous les dimanches, sinon, vous risquez d'être
+			expulsé pour inactivitée.
+			<br />
+			Oubliez pas de prévenir en cas d'absences. Envoyez un message privé a la chef de
+			préférence pour être sûr que le message sera vu.
+		</p>
+	</section>
+	<section class="border reveal">
+		<h2>Vous ne faites pas 2 000xp ?</h2>
+		<p>
+			Notre but dans ce clan est d'avoir des joueurs assez actifs si possible, mais aussi de
+			trouver des gens qui vont parler dans le chat du clan, qui voudront jouer avec nous ! Si
+			vous ne faites pas l'xp qu'il faut, mais que vous nous parler, vous ne serez pas banni.
+			<br />
+			Cette demande d'xp est surtout valable pour les gens qui ne participent pas à la vie du
+			clan.
+			<br />
+			CEPENDANT, si vous participez aux quêtes, nous serons dans ce cas beaucoup plus
+			regardant sur l'xp, car cela peut nous bloquer d'avoir des joueurs qui ne font pas d'xp
+			sur les quêtes.
+			<br />
+			Si vous jouez et faites de l'xp, n'hésitez par contre pas à faire les quêtes, c'est
+			toujours agréable de voir que du monde participe !
+		</p>
+	</section>
+	<section class="border reveal">
+		<h2>Informations supplémentaires</h2>
+		<p>
+			Veuillez regarder dans l'onglet quêtes pour avoir des informations sur leurs déroulement
+			ainsi que sur les règles des quêtes.
+			<br />
+			De même, dans l'onglet récompenses, vous trouverez des informations sur les bonus et
+			malus mis en place.
+		</p>
+	</section>
+	<section class="border reveal">
+		<h2>Ban définitif</h2>
+		<p>
+			On ban définitivement les trollers, les homophobes et tous les comportements
+			inappropriés (anti-jeu, team-up, injure, random...) même si il n’y a pas de membre du
+			clan dans la partie.
+		</p>
+	</section>
+	<section class="border reveal">
+		<h2>Grind</h2>
+		<p>
+			Le grind est autorisé.
+			<br /><br />
+			Pour avoir des explications sur le grind : <a href="/informations">cliquez ici</a>.
+		</p>
+	</section>
+	<section id="mute" class="border reveal">
+		<h2>Comment mute le tchat du clan ?</h2>
+		<p>
+			Vu qu'on est un clan qui parle beaucoup, il est possible que vous soyez dérangé par les
+			messages.
+		</p>
+		<p>
+			Pour enlever les notifications du tchat, il faut :
+			<br />
+			Cliquez sur le blason du clan
+			<br />
+			Cliquez sur l'onglet réglages
+			<br />
+			Décochez l'option "Tchat"
+		</p>
+	</section>
+	<section id="idee" class="border reveal">
+		<h2>Questions / idées</h2>
+		<p>
+			Si vous avez des questions ou des idées à nous faire parvenir, contactez nous sur
+			discord ou par message privé voir même dans le tchat du clan.
+		</p>
+	</section>
+	<section id="warning" class="border reveal">
+		<h2>Attention</h2>
+		<p>
+			Toutes les informations auparavant sont susceptible de changer d'une semaine à l'autre,
+			pour être sûr d'avoir les bonnes informations :
+			<br />
+			Surveillez les messages et annonces du clan.
+			<br />
+			Regardez les informations dans la description du clan et dans les messages épinglés dans
+			le tchat du clan.
+		</p>
+	</section>
+</template>

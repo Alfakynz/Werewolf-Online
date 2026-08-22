@@ -1,0 +1,6 @@
+<template>
+	<img
+		class="b-cpl"
+		src="https://static.wikia.nocookie.net/werewolf-online/images/8/8c/Cupid_select_lovers_sticker.png"
+	/>
+</template>

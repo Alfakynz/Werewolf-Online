@@ -1,32 +1,58 @@
 {
-  "name": "werewolf-online",
-  "version": "1.0.0",
-  "description": "Werewolf Online's website",
-  "main": "api/index.js",
-  "scripts": {
-    "build": "sass --style compressed views/css/style.scss views/css/style.css",
-    "start": "node api/index.js",
-    "sass": "sass --watch views/css/style.scss views/css/style.css"
-  },
-  "dependencies": {
-    "axios": "^1.7.7",
-    "body-parser": "^1.20.3",
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.21.1",
-    "express-session": "^1.18.1",
-    "firebase": "^11.0.1",
-    "handlebars": "^4.7.8",
-    "path": "^0.12.7"
-  },
-  "engines": {
-    "node": "20.x"
-  },
-  "keywords": [
-    "node"
-  ],
-  "type": "commonjs",
-  "devDependencies": {
-    "sass": "^1.80.6"
-  }
+	"name": "werewolf-online",
+	"version": "2.0.0",
+	"description": "Werewolf Online's website",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev:vite": "vite",
+		"dev:sass": "sass --watch src/styles/style.scss:src/styles/style.css",
+		"dev": "concurrently \"npm:dev:vite\" \"npm:dev:sass\"",
+		"build": "run-p type-check \"build-only {@}\" --",
+		"preview": "vite preview",
+		"test:unit": "vitest",
+		"build-only": "vite build",
+		"type-check": "vue-tsc --build",
+		"format": "prettier --write --experimental-cli src/"
+	},
+	"dependencies": {
+		"sass": "^1.103.0",
+		"vue": "rc",
+		"vue-router": "^5.2.0"
+	},
+	"devDependencies": {
+		"@tsconfig/node24": "^24.0.5",
+		"@types/jsdom": "^30.0.0",
+		"@types/node": "^24.13.3",
+		"@vitejs/plugin-vue": "^6.0.8",
+		"@vue/test-utils": "^2.4.11",
+		"@vue/tsconfig": "^0.9.1",
+		"concurrently": "^10.0.5",
+		"jsdom": "^30.0.1",
+		"npm-run-all2": "^9.0.3",
+		"prettier": "3.9.6",
+		"typescript": "~7.0.2",
+		"vite": "^8.2.2",
+		"vite-plugin-vue-devtools": "^8.2.1",
+		"vitest": "^4.1.11",
+		"vue-tsc": "^3.3.10"
+	},
+	"engines": {
+		"node": "^22.18.0 || >=24.12.0"
+	},
+	"overrides": {
+		"vue": "rc",
+		"@vue/compiler-core": "rc",
+		"@vue/compiler-dom": "rc",
+		"@vue/compiler-sfc": "rc",
+		"@vue/compiler-ssr": "rc",
+		"@vue/compiler-vapor": "rc",
+		"@vue/reactivity": "rc",
+		"@vue/runtime-core": "rc",
+		"@vue/runtime-dom": "rc",
+		"@vue/runtime-vapor": "rc",
+		"@vue/server-renderer": "rc",
+		"@vue/shared": "rc",
+		"@vue/compat": "rc"
+	}
 }

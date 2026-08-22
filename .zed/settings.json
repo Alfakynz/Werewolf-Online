@@ -1,0 +1,7 @@
+   {
+     "languages": {
+       "Vue.js": {
+         "language_servers": ["vue-language-server", "!typescript-language-server"]
+       }
+     }
+   }

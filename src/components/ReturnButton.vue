@@ -1,0 +1,7 @@
+<template>
+	<section class="return" title="Remonter en haut de la page">
+		<a href="#">
+			<img class="returnLogo" src="../images/fleche.png" />
+		</a>
+	</section>
+</template>
