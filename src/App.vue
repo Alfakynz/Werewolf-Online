@@ -5,7 +5,9 @@ import { useRoute, RouterView } from 'vue-router'
 import HeaderView from '@/components/layout/HeaderView.vue'
 import NavView from '@/components/layout/NavView.vue'
 import DiscordButton from '@/components/layout/DiscordButton.vue'
+
 const route = useRoute()
+const header_title: string = route.meta.title as string
 
 watch(
 	() => route.meta.nav_title,
@@ -18,7 +20,7 @@ watch(
 
 <template>
 	<NavView />
-	<HeaderView :title="route.meta.title" />
+	<HeaderView :title="header_title" />
 	<DiscordButton />
 	<main>
 		<RouterView />
