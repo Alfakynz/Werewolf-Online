@@ -1,0 +1,31 @@
+$background-color: #230054;
+$color: #400099;
+$border-color: #100026;
+$text-color: #ffffff;
+$discord-color: #5865f2;
+$section-color: #300072;
+
+// CSS pour téléphone
+:root {
+	--nav-position: fixed;
+	--section-width: 100%;
+	--section-margin: 0;
+}
+
+// CSS pour tablette
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+	:root {
+		--nav-position: sticky;
+		--section-width: 90%;
+		--section-margin: 1rem;
+	}
+}
+
+// CSS pour ordinateur
+@media screen and (min-width: 1024px) {
+	:root {
+		--nav-position: sticky;
+		--section-width: 75%;
+		--section-margin: 2.5rem;
+	}
+}

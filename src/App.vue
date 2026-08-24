@@ -1,20 +1,26 @@
 <script setup lang="ts">
+import { watch } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 
-import FooterView from './components/FooterView.vue'
-import HeaderView from './components/HeaderView.vue'
-import MenuView from './components/MenuView.vue'
-import ReturnButton from './components/ReturnButton.vue'
-
+import HeaderView from '@/components/layout/HeaderView.vue'
+import NavView from '@/components/layout/NavView.vue'
+import DiscordButton from '@/components/layout/DiscordButton.vue'
 const route = useRoute()
+
+watch(
+	() => route.meta.nav_title,
+	(title) => {
+		document.title = (title as string) ?? 'Werewolf Online'
+	},
+	{ immediate: true }
+)
 </script>
 
 <template>
+	<NavView />
 	<HeaderView :title="route.meta.title" />
-	<MenuView :currentPage="route.name" />
-	<ReturnButton />
+	<DiscordButton />
 	<main>
 		<RouterView />
 	</main>
-	<FooterView />
 </template>

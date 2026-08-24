@@ -6,6 +6,6 @@ defineProps({
 
 <template>
 	<header>
-		<h1>{{ title }}<br />Werewolf Online</h1>
+		<h1>{{ title }}</h1>
 	</header>
 </template>

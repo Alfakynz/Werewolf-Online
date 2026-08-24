@@ -1,99 +1,68 @@
 <script setup lang="ts">
-import { copyText } from '@/scripts/script.ts'
+import SectionBlock from '@/components/common/SectionBlock.vue'
+
+function copyText(text: string) {
+	var textToCopy = text;
+	navigator.clipboard.writeText(textToCopy).then(function () {
+		alert('Le texte ' + '"' + textToCopy + '"' + ' a été copié!');
+	})
+}
 </script>
 
 <template>
-	<section class="border">
-		<h2>Items spéciaux ?</h2>
+	<SectionBlock title="Items cachés dans une partie">
 		<p>
-			Les items spéciaux sont cachés un peu partout dans le jeu.
+			Pour recevoir des items spéciaux, écrivez dans le tchat lors d'une partie :
 		</p>
-	</section>
-	<section class="border">
-		<h2>Items cachés dans le tchat d'une partie</h2>
-		<p>
-			Écrivez dans le tchat lors d'une partie :<br />
-			1. "Hello Wolvesville"<br />
-			2. "I love wov"<br />
-			Pour recevoir des items.
-		</p>
-		<button id="copyButton" @click="copyText('Hello Wolvesville')">Copier 1.</button>
-		<button id="copyButton" @click="copyText('I love wov')">Copier 2.</button>
-		<br /><br />
-	</section>
-	<section class="border">
-		<h2>Memory</h2>
-		<p>
-			Sur iOS :
-			<br />
-			Cliquez plusieurs fois (trois / quatre fois) en bas de l'écran sur l'écran d'accueil.
-			<br />
-			Réalisez le mini-jeu (memory game)
-			<br />
-			Recevez les lunettes.
-		</p>
-		<p>
-			Ceci n'est pas disponible sur Android et PC
-		</p>
-	</section>
-	<section class="border">
-		<h2>Items caché FAQ</h2>
-		<p>
-			Cliquez sur le <span class="blueCircle">?</span>
-			<br />
-			Cliquez sur FAQ
-			<br />
-			Affichez tous les textes
-			<br />
-			Cliquez sur le texte rose qui s'est affiché (I know everything!)
-			<br />
-			Faites le quizz
-			<br />
-			Récupérez le chapeau avec l'ampoule
-		</p>
-	</section>
-	<section class="border">
-		<h2>Succès</h2>
-		<p>
-			Cliquez sur votre profil
-			<br />
-			Cliquez sur succès
-			<br />
-			Chercher le chasseur de tête
-			<br />
-			Cliquer plusieurs fois sur son icône
-			<br />
-			Récupérez la pancarte écris "vote"
-		</p>
-	</section>
-	<section class="border">
-		<h2>Sur ordi</h2>
-		<p>
-			Connecter vous au jeu sur le site
-			<br />
-			Récupérez les ordis du premier plan
-		</p>
-		<p>
-			Accepter tous les cookies du site
-			<br />
-			Récupérez le premier plan le loup qui mange un cookie
-		</p>
-		<p>
-			Activez les notifications du site
-			<br />
-			Récupérez la tombe qui ressemble à un pc
-		</p>
-		<p>
-			Jouez une partie sur le site
-			<br />
-			Récupérez le masque noir
-		</p>
-		<p>
-			Dites: "I am playing on Wolvesville web" dans une partie
-			<br />
-			Récupérez le chapeau en forme de boite rose
-		</p>
-		<button id="copyButton" @click="copyText('I am playing on Wolvesville web')">Copier</button>
-		<br /><br />
-	</section>
+		<ol>
+			<li>"Hello Wolvesville"</li>
+			<li>"I love wov"</li>
+		</ol>
+		<div>
+			<button class="items" @click="copyText('Hello Wolvesville')">Copier 1.</button>
+			<button class="items" @click="copyText('I love wov')">Copier 2.</button>
+		</div>
+	</SectionBlock>
+	<SectionBlock title="Items caché FAQ">
+		<ol>
+			<li>Cliquez sur le <span class="faq">?</span></li>
+			<li>Cliquez sur FAQ</li>
+			<li>Affichez tous les textes</li>
+			<li>Cliquez sur le texte rose qui s'est affiché (I know everything!)</li>
+			<li>Faites le quizz</li>
+			<li>Récupérez le chapeau avec l'ampoule</li>
+		</ol>
+	</SectionBlock>
+	<SectionBlock title="Succès">
+		<ol>
+			<li>Cliquez sur votre profil</li>
+			<li>Cliquez sur succès</li>
+			<li>Chercher le chasseur de tête</li>
+			<li>Cliquer plusieurs fois sur son icône</li>
+			<li>Récupérez la pancarte écris "vote"</li>
+		</ol>
+	</SectionBlock>
+	<SectionBlock title="Sur ordinateur">
+		<ol>
+			<li>Connecter vous au jeu sur le site</li>
+			<li>Récupérez les ordis du premier plan</li>
+		</ol>
+		<ol>
+			<li>Accepter tous les cookies du site</li>
+			<li>Récupérez le premier plan le loup qui mange un cookie</li>
+		</ol>
+		<ol>
+			<li>Activez les notifications du site</li>
+			<li>Récupérez la tombe qui ressemble à un pc</li>
+		</ol>
+		<ol>
+			<li>Jouez une partie sur le site</li>
+			<li>Récupérez le masque noir</li>
+		</ol>
+		<ol>
+			<li>Dites: "I am playing on Wolvesville web" dans une partie</li>
+			<li>Récupérez le chapeau en forme de boite rose</li>
+		</ol>
+		<button class="items" @click="copyText('I am playing on Wolvesville web')">Copier</button>
+	</SectionBlock>
 </template>

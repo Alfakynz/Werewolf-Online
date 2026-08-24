@@ -1,6 +1,0 @@
-<template>
-	<img
-		class="b-cpl"
-		src="https://www.wolvesville.com/static/media/rose_large_sticker_server.985a27229b8e6ccdc63e.png"
-	/>
-</template>

@@ -1,0 +1,7 @@
+export { default as HomeView } from './HomeView.vue'
+export { default as RulesView } from './RulesView.vue'
+export { default as QuestsView } from './QuestsView.vue'
+export { default as ItemsView } from './ItemsView.vue'
+export { default as SearchView } from './SearchView.vue'
+export { default as AboutView } from './AboutView.vue'
+export { default as NotFoundView } from './NotFoundView.vue'

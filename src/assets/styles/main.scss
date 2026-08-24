@@ -1,0 +1,273 @@
+@use './variables.scss' as *;
+
+@mixin hoverEffect($color) {
+	transition: filter 250ms ease;
+
+	&:hover {
+		filter: drop-shadow(0 0 5px $color);
+	}
+}
+
+html {
+	background-color: $background-color;
+	width: 100%;
+	height: 100%;
+	scroll-behavior: smooth;
+	color: $text-color;
+	font-family: 'San Francisco', sans-serif;
+}
+
+body {
+	display: block;
+	padding-bottom: 75px;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+	margin-inline: 10px;
+	text-align: center;
+}
+
+a {
+	color: $text-color;
+}
+
+.nav {
+	position: var(--nav-position);
+	top: 0;
+	right: 0;
+	z-index: 100;
+	transition: all 250ms ease;
+	border-radius: 10px;
+	background-color: $color;
+	width: 100%;
+
+	.nav-header {
+		display: none;
+	}
+
+	ul {
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+		padding: 0;
+		list-style: none;
+
+		.nav-item {
+			display: block;
+			transition: all 250ms ease;
+			border-bottom: 2px solid $color;
+			border-radius: 10px 10px 0 0;
+			padding: 1rem 1.25rem;
+			color: $text-color;
+			font-weight: 500;
+			text-decoration: none;
+		}
+
+		.nav-item:hover {
+			border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+
+		.nav-item.router-link-active {
+			border-bottom: 2px solid $text-color;
+			color: $text-color;
+		}
+	}
+
+	// Mobile
+	@media screen and (max-width: 767px) {
+		$gutter: 0.75rem;
+
+		top: $gutter;
+		right: $gutter;
+		width: 3rem;
+
+		&.is-open {
+			width: calc(100% - #{$gutter * 2});
+		}
+
+		.nav-header {
+			display: flex;
+			justify-content: flex-end;
+			padding: 0.75rem 0.88rem 0.75rem 0;
+		}
+
+		.burger {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			cursor: pointer;
+			border: none;
+			background: none;
+			padding: 0;
+			width: 20px;
+			height: 20px;
+
+			span {
+				display: block;
+				transition:
+					transform 250ms ease,
+					opacity 250ms ease;
+				border-radius: 2px;
+				background-color: $text-color;
+				width: 100%;
+				height: 3px;
+			}
+
+			&.is-open {
+				span:nth-child(1) {
+					transform: translateY(8px) rotate(45deg);
+				}
+				span:nth-child(2) {
+					opacity: 0;
+				}
+				span:nth-child(3) {
+					transform: translateY(-8px) rotate(-45deg);
+				}
+			}
+		}
+
+		.nav-collapse {
+			display: grid;
+			grid-template-rows: 0fr;
+			transition: grid-template-rows 250ms ease;
+
+			&.is-open {
+				grid-template-rows: 1fr;
+				padding-bottom: 1rem;
+			}
+		}
+
+		ul {
+			flex-direction: column;
+			align-items: stretch;
+			min-height: 0;
+			overflow: hidden;
+
+			.nav-item {
+				border-radius: 15px;
+				text-align: center;
+
+				&.router-link-active {
+					border: 1.5px solid $border-color;
+				}
+			}
+		}
+	}
+}
+
+section {
+	margin: 1rem auto;
+	border: 2px solid $border-color;
+	border-radius: 15px;
+	background-color: $section-color;
+	padding: 0 1rem 1rem 1rem;
+	max-width: var(--section-width);
+
+	p {
+		margin: auto var(--section-margin);
+	}
+}
+
+.table {
+	margin: 1rem auto;
+	border: 2px solid $border-color;
+	border-radius: 10px;
+	padding: 1rem 0 0 0;
+	max-width: calc(var(--section-width) + 2rem);
+	overflow: hidden;
+	text-align: center;
+
+	table {
+		margin: 0;
+		border-collapse: collapse;
+		width: 100%;
+		height: 150px;
+
+		caption {
+			box-shadow: 0 1px 0 0 $border-color;
+			padding-bottom: 4px;
+			height: 30px;
+			font-weight: bold;
+			font-size: 22px;
+		}
+
+		th,
+		td {
+			border: 1px solid $border-color;
+			padding: 0.5rem;
+		}
+
+		tr > *:first-child {
+			border-left: none;
+		}
+
+		tr > *:last-child {
+			border-right: none;
+		}
+
+		tr:last-child > * {
+			border-bottom: none;
+		}
+
+		tr:first-child > * {
+			border-top: none;
+		}
+	}
+}
+
+.items {
+	cursor: pointer;
+	margin-inline: 3px;
+	border: solid 1px $border-color;
+	border-radius: 25px;
+	background-color: $color;
+	padding: 7.5px 10px;
+	color: $text-color;
+	@include hoverEffect($color);
+}
+
+.img,
+.bimg {
+	vertical-align: middle;
+	padding-bottom: 2px;
+}
+
+.img {
+	height: 15px;
+}
+
+.bimg {
+	height: 25px;
+}
+
+.discord {
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+
+	a > img {
+		border-radius: 15px;
+		$discord-width: 50px;
+		background-color: transparent;
+		width: $discord-width;
+		height: $discord-width;
+		@include hoverEffect($discord-color);
+	}
+}
+
+.faq {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid white;
+	border-radius: 50%;
+	background-color: #03bcff;
+	width: 20px;
+	height: 20px;
+	color: white;
+}

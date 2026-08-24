@@ -1,17 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import AccueilView from '@/views/AccueilView.vue'
-import ReglesView from '@/views/ReglesView.vue'
-import QuetesView from '@/views/QuetesView.vue'
-import RecompensesView from '@/views/RecompensesView.vue'
-import EventsView from '@/views/EventsView.vue'
-import ItemsView from '@/views/ItemsView.vue'
-import QuestionnaireView from '@/views/QuestionnaireView.vue'
-import SearchView from '@/views/SearchView.vue'
-import InfosView from '@/views/InfosView.vue'
-import AnnonceView from '@/views/AnnonceView.vue'
-import NoteView from '@/views/NoteView.vue'
-import AdminView from '@/views/AdminView.vue'
+import * as Views from '@/views/index'
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,101 +8,80 @@ const router = createRouter({
 	routes: [
 		{
 			path: '/',
-			name: 'accueil',
-			component: AccueilView,
+			name: 'home',
+			component: Views.HomeView,
 			meta: {
-				title: 'Bienvenue dans le clan',
+				title: 'Accueil',
+				nav_title: 'Accueil',
 			},
 		},
 		{
-			path: '/regles',
-			name: 'regles',
-			component: ReglesView,
+			path: '/rules',
+			name: 'rules',
+			component: Views.RulesView,
 			meta: {
 				title: 'Règles du clan',
+				nav_title: 'Règles',
 			},
 		},
 		{
-			path: '/quetes',
-			name: 'quetes',
-			component: QuetesView,
+			path: '/quests',
+			name: 'quests',
+			component: Views.QuestsView,
 			meta: {
 				title: 'Quêtes du clan',
-			},
-		},
-		{
-			path: '/recompenses',
-			name: 'recompenses',
-			component: RecompensesView,
-			meta: {
-				title: 'Récompenses du clan',
-			},
-		},
-		{
-			path: '/events',
-			name: 'events',
-			component: EventsView,
-			meta: {
-				title: 'Évènements du clan',
+				nav_title: 'Quêtes',
 			},
 		},
 		{
 			path: '/items',
 			name: 'items',
-			component: ItemsView,
+			component: Views.ItemsView,
 			meta: {
-				title: 'Items spéciaux',
-			},
-		},
-		{
-			path: '/questionnaire',
-			name: 'questionnaire',
-			component: QuestionnaireView,
-			meta: {
-				title: 'Questionnaire bonus',
-			},
-		},
-		{
-			path: '/infos',
-			name: 'infos',
-			component: InfosView,
-			meta: {
-				title: 'Informations du clan',
+				title: 'Items cachés',
+				nav_title: 'Items cachés',
 			},
 		},
 		{
 			path: '/search',
 			name: 'search',
-			component: SearchView,
+			component: Views.SearchView,
 			meta: {
-				title: 'Chercher un joueur',
+				title: "Recherche d'un joueur",
+				nav_title: 'Recherche',
 			},
 		},
 		{
-			path: '/annonce',
-			name: 'annonce',
-			component: AnnonceView,
+			path: '/about',
+			name: 'about',
+			component: Views.AboutView,
 			meta: {
-				title: 'Annonces du clan',
+				title: 'À propos',
+				nav_title: 'À propos',
 			},
 		},
 		{
-			path: '/note',
-			name: 'note',
-			component: NoteView,
+			path: '/:pathMatch(.*)*',
+			name: 'not-found',
+			component: Views.NotFoundView,
 			meta: {
-				title: 'Note du questionnaire',
-			},
-		},
-		{
-			path: '/admin',
-			name: 'admin',
-			component: AdminView,
-			meta: {
-				title: 'Administration du clan',
+				title: 'Page introuvable',
+				nav_title: '',
 			},
 		},
 	],
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+			return savedPosition
+		}
+		if (to.hash) {
+			return {
+				el: to.hash,
+				behavior: 'smooth',
+			}
+		}
+		return { top: 0, behavior: 'smooth' }
+	},
 })
 
 export default router

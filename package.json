@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev:vite": "vite",
-		"dev:sass": "sass --watch src/styles/style.scss:src/styles/style.css",
+		"dev:sass": "sass --watch src/assets/styles/main.scss:src/assets/styles/main.css",
 		"dev": "concurrently \"npm:dev:vite\" \"npm:dev:sass\"",
 		"build": "run-p type-check \"build-only {@}\" --",
 		"preview": "vite preview",
