@@ -1,36 +1,16 @@
-import supabase from '@/services/supabaseClient'
 import type { ClanModifiers } from '@/types/clan'
+
+const API_URL: string = import.meta.env.VITE_API_URL
 
 export async function getClanModifiers(clanId: string): Promise<ClanModifiers> {
 	try {
-		const { data: players, error } = await supabase
-			.from('players')
-			.select('username, quest_modifier')
-			.eq('clan_id', clanId)
-			.eq('in_clan', true)
-			.neq('quest_modifier', 0)
-
-		if (error) throw error
-
-		const sortAlphabetically = (a: any, b: any) => a.username.localeCompare(b.username)
-
-		const bonus = players
-			.filter((p) => p.quest_modifier < 0)
-			.sort(sortAlphabetically)
-			.map((p) => ({
-				username: p.username,
-				amount: Math.abs(p.quest_modifier),
-			}))
-
-		const malus = players
-			.filter((p) => p.quest_modifier > 0)
-			.sort(sortAlphabetically)
-			.map((p) => ({
-				username: p.username,
-				amount: p.quest_modifier,
-			}))
-
-		return { bonus, malus }
+		const response = await fetch(`${API_URL}/api/bonus/${clanId}`)
+		if (!response.ok) {
+			const error = new Error(`API error: ${response.status}`) as Error & { status?: number }
+			error.status = response.status
+			throw error
+		}
+		return await response.json()
 	} catch (err) {
 		console.error('Erreur lors de la récupération des bonus/malus:', err)
 		throw err
