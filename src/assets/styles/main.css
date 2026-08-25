@@ -3,6 +3,7 @@
   --section-width: 100%;
   --section-margin: 0;
   --details-width: 75%;
+  --skin-width: 75%;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
@@ -11,6 +12,7 @@
     --section-width: 90%;
     --section-margin: 1rem;
     --details-width: 65%;
+    --skin-width: 65%;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -19,6 +21,7 @@
     --section-width: 75%;
     --section-margin: 2.5rem;
     --details-width: 50%;
+    --skin-width: 50%;
   }
 }
 html {
@@ -323,8 +326,9 @@ section p {
 
 .skin {
   margin-inline: auto;
+  margin-bottom: 1rem;
   border-radius: 20px;
-  width: 50%;
+  width: var(--skin-width);
   height: auto;
 }
 

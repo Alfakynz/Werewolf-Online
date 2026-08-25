@@ -5,7 +5,8 @@ import Gold from '@/assets/images/Gold.vue'
 import BGold from '@/assets/images/BGold.vue'
 import Gem from '@/assets/images/Gem.vue'
 import BGem from '@/assets/images/BGem.vue'
-import { getClanModifiers, type ClanModifiers } from '@/services/bonus'
+import { getClanModifiers } from '@/services/bonus'
+import type { ClanModifiers } from '@/types/clan'
 
 const modifiers = ref<ClanModifiers>({ bonus: [], malus: [] })
 const isLoading = ref(true)

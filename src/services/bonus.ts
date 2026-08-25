@@ -1,14 +1,5 @@
 import supabase from '@/services/supabaseClient'
-
-export interface PlayerModifier {
-	username: string
-	amount: number
-}
-
-export interface ClanModifiers {
-	bonus: PlayerModifier[]
-	malus: PlayerModifier[]
-}
+import type { ClanModifiers } from '@/types/clan'
 
 export async function getClanModifiers(clanId: string): Promise<ClanModifiers> {
 	try {

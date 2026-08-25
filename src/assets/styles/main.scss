@@ -329,8 +329,9 @@ section {
 
 .skin {
 	margin-inline: auto;
+	margin-bottom: 1rem;
 	border-radius: 20px;
-	width: 50%;
+	width: var(--skin-width);
 	height: auto;
 }
 

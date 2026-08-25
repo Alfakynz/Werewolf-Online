@@ -11,6 +11,7 @@ $section-color: #300072;
 	--section-width: 100%;
 	--section-margin: 0;
 	--details-width: 75%;
+	--skin-width: 75%;
 }
 
 // CSS pour tablette
@@ -20,6 +21,7 @@ $section-color: #300072;
 		--section-width: 90%;
 		--section-margin: 1rem;
 		--details-width: 65%;
+		--skin-width: 65%;
 	}
 }
 
@@ -30,5 +32,6 @@ $section-color: #300072;
 		--section-width: 75%;
 		--section-margin: 2.5rem;
 		--details-width: 50%;
+		--skin-width: 50%;
 	}
 }

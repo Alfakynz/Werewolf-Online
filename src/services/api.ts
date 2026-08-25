@@ -1,7 +1,9 @@
+import type { QuestData, Announcement, AvailableQuest, Player, ClanInfo, Role } from '@/types/index'
+
 const API_URL: string = 'https://api.wolvesville.com'
 const API_KEY: string = import.meta.env.VITE_API_KEY
 export const CLAN_ID: string = '28f85d51-37b1-4fc6-a938-47656353363c'
-const CLAN_NAME: string = 'WerewoIf OnIine*'
+export const CLAN_NAME: string = 'WerewoIf OnIine*'
 
 const HEADERS = {
 	'Content-Type': 'application/json',
@@ -9,74 +11,20 @@ const HEADERS = {
 	Authorization: `Bot ${API_KEY}`,
 }
 
-export async function getClanInfo(id: string) {
-	const response = await fetch(`${API_URL}/clans/${id}/info`, {
-		headers: HEADERS,
-	})
-
+async function apiFetch<T>(path: string): Promise<T> {
+	const response = await fetch(`${API_URL}${path}`, { headers: HEADERS })
 	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
+		const error = new Error(`API error: ${response.status}`) as Error & { status?: number }
+		error.status = response.status
+		throw error
 	}
-
 	return response.json()
 }
 
-export async function getRoles() {
-	const response = await fetch(`${API_URL}/roles`, {
-		headers: HEADERS,
-	})
-
-	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
-	}
-
-	return response.json()
-}
-
-export async function searchUser(name: string) {
-	const response = await fetch(`${API_URL}/players/search?username=${name}`, {
-		headers: HEADERS,
-	})
-
-	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
-	}
-
-	return response.json()
-}
-
-export async function currentCuest(id: string) {
-	const response = await fetch(`${API_URL}/clans/${id}/quests/active`, {
-		headers: HEADERS,
-	})
-
-	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
-	}
-
-	return response.json()
-}
-
-export async function announcements(id: string) {
-	const response = await fetch(`${API_URL}/clans/${id}/announcements`, {
-		headers: HEADERS,
-	})
-
-	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
-	}
-
-	return response.json()
-}
-
-export async function questsAvailable(id: string) {
-	const response = await fetch(`${API_URL}/clans/${id}/quests/available`, {
-		headers: HEADERS,
-	})
-
-	if (!response.ok) {
-		throw new Error(`API error: ${response.status}`)
-	}
-
-	return response.json()
-}
+export const searchUser = (name: string) => apiFetch<Player>(`/players/search?username=${name}`)
+export const getClanInfo = (id: string) => apiFetch<ClanInfo>(`/clans/${id}/info`)
+export const getRoles = () => apiFetch<{ roles: Role[] }>(`/roles`)
+export const currentCuest = (id: string) => apiFetch<QuestData>(`/clans/${id}/quests/active`)
+export const announcements = (id: string) => apiFetch<Announcement[]>(`/clans/${id}/announcements`)
+export const questsAvailable = (id: string) =>
+	apiFetch<AvailableQuest[]>(`/clans/${id}/quests/available`)

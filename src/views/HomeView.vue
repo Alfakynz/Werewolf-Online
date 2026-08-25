@@ -2,75 +2,31 @@
 import { ref, computed, onMounted } from 'vue'
 import SectionBlock from '@/components/common/SectionBlock.vue'
 import { CLAN_ID, currentCuest, announcements, questsAvailable } from '@/services/api'
+import { fetchSafe } from '@/utils/apiSafe'
+import { parseNextQuest } from '@/utils/quest'
+import type { Announcement, AvailableQuest, Participant, QuestData } from '@/types/index'
 
 import imgEnAttente from '@/assets/images/enattente.jpg'
 import Gold from '@/assets/images/Gold.vue'
 import Gem from '@/assets/images/Gem.vue'
-
-interface Participant {
-	playerId: string
-	username: string
-	xp: number
-}
-
-interface QuestData {
-	quest: {
-		promoImageUrl: string
-		purchasableWithGems: boolean
-	}
-	tierEndTime: string
-	participants: Participant[]
-}
-
-interface Announcement {
-	id: string
-	content: string
-	timestamp: string
-}
-
-interface AvailableQuest {
-	id: string
-	promoImageUrl: string
-	purchasableWithGems: boolean
-}
 
 const activeQuest = ref<QuestData | null>(null)
 const nextQuestAnnouncements = ref<Announcement[]>([])
 const allAvailableQuests = ref<AvailableQuest[]>([])
 const isLoading = ref<boolean>(true)
 
-
 onMounted(async () => {
-	try {
-		isLoading.value = true
-		const questRes = await currentCuest(CLAN_ID).catch(e => {
-			if (!(e instanceof Error && e.message.includes('404'))) {
-				console.error('currentQuest KO', e)
-			}
-			else {
-				console.log("Pas de quête active")
-			}
-			return null
-		})
-		const annoncesRes = await announcements(CLAN_ID).catch(e => {
-			if (!(e instanceof Error && e.message.includes('404'))) {
-				console.error('announcements KO', e)
-			}
-			else {
-				console.log("Pas d'annonces")
-			}
-			return null
-		})
-		const availableRes = await questsAvailable(CLAN_ID).catch(e => { console.error('questsAvailable KO', e); return null })
+	isLoading.value = true
+	const [questRes, annoncesRes, availableRes] = await Promise.all([
+		fetchSafe(currentCuest(CLAN_ID), 'currentQuest', [404]),
+		fetchSafe(announcements(CLAN_ID), 'announcements', [404]),
+		fetchSafe(questsAvailable(CLAN_ID), 'questsAvailable'),
+	])
 
-		activeQuest.value = questRes
-		nextQuestAnnouncements.value = annoncesRes
-		allAvailableQuests.value = availableRes
-	} catch (error) {
-		console.error("Erreur lors de la récupération des données:", error)
-	} finally {
-		isLoading.value = false
-	}
+	activeQuest.value = questRes
+	nextQuestAnnouncements.value = annoncesRes ?? []
+	allAvailableQuests.value = availableRes ?? []
+	isLoading.value = false
 })
 
 const nextQuestAnnouncement = computed(() => {
@@ -80,31 +36,13 @@ const nextQuestAnnouncement = computed(() => {
 const nextQuestDetails = computed(() => {
 	if (!nextQuestAnnouncement.value) return null
 
-	if (allAvailableQuests.value.length === 0) {
-		console.warn("Attention: allAvailableQuests est vide. L'API a-t-elle renvoyé les quêtes ?")
+	const result = parseNextQuest(nextQuestAnnouncement.value.content, allAvailableQuests.value)
+	if (!result) {
+		console.error('Quête introuvable dans la liste API')
 		return null
 	}
 
-	const content = nextQuestAnnouncement.value.content
-	console.log("Annonce de quête détectée :", content)
-
-	const matchIndex = content.match(/quête n°(\d+)/i)
-	const questIndex = matchIndex && matchIndex[1] ? parseInt(matchIndex[1]) - 1 : 0
-
-	const quest = allAvailableQuests.value[questIndex]
-	if (!quest) {
-		console.error(`La quête numéro ${questIndex + 1} est introuvable dans la liste API !`)
-		return null
-	}
-
-	const matchTime = content.match(/prochaine quête\s*(.*?)(?:📢|:loudspeaker:|🏆|\n|$)/iu)
-	const timeText = matchTime && matchTime[1] ? matchTime[1].trim() : 'bientôt'
-
-	return {
-		quest,
-		timeText,
-		rawContent: content
-	}
+	return { ...result, rawContent: nextQuestAnnouncement.value.content }
 })
 </script>
 
@@ -125,7 +63,8 @@ const nextQuestDetails = computed(() => {
 	<div v-else>
 		<SectionBlock title="Prochaine quête" class="center">
 			<div v-if="nextQuestDetails && nextQuestDetails.quest">
-				<img class="skin" :src="nextQuestDetails.quest.promoImageUrl" alt="Prochaine quête" />
+				<img class="skin" :src="nextQuestDetails.quest.promoImageUrl.replace('.jpg', '@2x.jpg')"
+					alt="Prochaine quête" />
 				<p>
 					La prochaine quête sera une quête
 					<span v-if="nextQuestDetails.quest.purchasableWithGems">
@@ -146,7 +85,8 @@ const nextQuestDetails = computed(() => {
 
 		<SectionBlock title="Quête actuelle" class="center">
 			<div v-if="activeQuest && activeQuest.quest">
-				<img class="skin" :src="activeQuest.quest.promoImageUrl" alt="Quête actuelle" />
+				<img class="skin" :src="activeQuest.quest.promoImageUrl.replace('.jpg', '@2x.jpg')"
+					alt="Quête actuelle" />
 
 				<p>Participants :</p>
 				<ul>

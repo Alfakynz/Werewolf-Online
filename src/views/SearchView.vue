@@ -3,27 +3,26 @@ import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import SectionBlock from '@/components/common/SectionBlock.vue'
 import { getClanInfo, getRoles, searchUser } from '@/services/api'
+import { mapRoleCards, getColor } from '@/utils/player'
+import type { Player, ClanInfo, DisplayRole } from '@/types/player'
 
 const route = useRoute()
 const router = useRouter()
 
 const username = ref('')
-const player = ref<any | null>(null)
-const clan = ref<any | null>(null)
-const roles = ref<any[]>([])
+const player = ref<Player | null>(null)
+const clan = ref<ClanInfo | null>(null)
+const roles = ref<DisplayRole[]>([])
 
 const loading = ref(false)
 const error = ref<string | null>(null)
 
-async function handleSearch(fromUrl = false) {
-	if (!username.value.trim()) {
-		return
-	}
+function updateQuery(name: string) {
+	router.push({ query: { u: name } })
+}
 
-	// Met à jour l'URL sauf si la recherche vient déjà de l'URL (évite une boucle)
-	if (!fromUrl) {
-		router.push({ query: { u: username.value.trim() } })
-	}
+async function handleSearch(name = username.value.trim()) {
+	if (!name) return
 
 	loading.value = true
 	error.value = null
@@ -32,24 +31,14 @@ async function handleSearch(fromUrl = false) {
 	roles.value = []
 
 	try {
-		player.value = await searchUser(username.value.trim())
+		player.value = await searchUser(name)
 
 		if (player.value.clanId) {
 			clan.value = await getClanInfo(player.value.clanId)
 		}
 
-		const response = await getRoles()
-
-		roles.value = player.value.roleCards.map((card: any) => {
-			const role = response.roles.find((role: any) => role.id === card.roleId1)
-
-			return {
-				roleId1: card.roleId1,
-				name: role?.name ?? card.roleId1,
-				img: role.image.url,
-				rarity: card.rarity.toLowerCase(),
-			}
-		})
+		const rolesRes = await getRoles()
+		roles.value = mapRoleCards(player.value.roleCards, rolesRes.roles)
 	} catch (err) {
 		console.error(err)
 		error.value = 'Impossible de trouver ce joueur.'
@@ -70,35 +59,18 @@ function formatDate(date: string): string {
 	return formatted.replace(' ', ' à ')
 }
 
-function getColor(rarity: string): string {
-	switch (rarity.toUpperCase()) {
-		case 'COMMON':
-			return 'gray'
-		case 'RARE':
-			return 'cyan'
-		case 'EPIC':
-			return 'blueviolet'
-		case 'LEGENDARY':
-			return 'yellow'
-		case 'MYTHICAL':
-			return 'red'
-		default:
-			return 'white'
-	}
-}
-
 onMounted(() => {
 	const u = route.query.u
 	if (typeof u === 'string' && u.trim()) {
 		username.value = u
-		handleSearch(true)
+		handleSearch(u.trim())
 	}
 })
 </script>
 
 <template>
 	<SectionBlock title="Entrez le pseudo de quelqu'un" class="center">
-		<form class="searchForm" @submit.prevent="handleSearch()">
+		<form class="searchForm" @submit.prevent="() => { updateQuery(username.trim()); handleSearch() }">
 			<input v-model="username" name="username" type="search" placeholder="Chercher un joueur" />
 
 			<button type="submit" :disabled="loading" class="search-btn">
@@ -116,7 +88,7 @@ onMounted(() => {
 			<b>Bio :</b>
 			<br />
 
-			<span v-for="line in player.personalMessage.split('\n')" :key="line">
+			<span v-for="line in (player.personalMessage ?? '').split('\n')" :key="line">
 				{{ line }}<br />
 			</span>
 		</p>
