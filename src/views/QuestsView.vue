@@ -1,9 +1,25 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import SectionBlock from '@/components/common/SectionBlock.vue'
 import Gold from '@/assets/images/Gold.vue'
 import BGold from '@/assets/images/BGold.vue'
 import Gem from '@/assets/images/Gem.vue'
 import BGem from '@/assets/images/BGem.vue'
+import { getClanModifiers, type ClanModifiers } from '@/services/bonus'
+
+const modifiers = ref<ClanModifiers>({ bonus: [], malus: [] })
+const isLoading = ref(true)
+const clanId: string = '28f85d51-37b1-4fc6-a938-47656353363c'
+
+onMounted(async () => {
+	try {
+		modifiers.value = await getClanModifiers(clanId)
+	} catch (error) {
+		console.error("Erreur lors du chargement des bonus/malus :", error)
+	} finally {
+		isLoading.value = false
+	}
+})
 </script>
 
 <template>
@@ -79,6 +95,16 @@ import BGem from '@/assets/images/BGem.vue'
 			Pour chaque malus, vous devrez payer 400
 			<Gold /> de plus votre quête au clan (ou n'importe quand mais précisez malus en raison du don).
 		</p>
+		<p>
+		<h4>Liste des Malus :</h4>
+		<div v-if="isLoading" class="loading">Chargement...</div>
+		<ul v-else-if="modifiers.malus.length > 0">
+			<li v-for="player in modifiers.malus" :key="player.username">
+				{{ player.username }} x{{ player.amount }}
+			</li>
+		</ul>
+		<p v-else class="empty-state">Aucun joueur n'a de malus.</p>
+		</p>
 	</SectionBlock>
 	<SectionBlock title="Bonus" :img="BGold">
 		<p>
@@ -94,6 +120,16 @@ import BGem from '@/assets/images/BGem.vue'
 			Les quêtes si dessous ne sont pas à jour, merci de regarder les annonces du clan pour voir les véritables
 			quêtes
 			<Gold /> gratuites.
+		</p>
+		<p>
+		<h4>Liste des bonus :</h4>
+		<div v-if="isLoading" class="loading">Chargement...</div>
+		<ul v-else-if="modifiers.bonus.length > 0">
+			<li v-for="player in modifiers.bonus" :key="player.username">
+				{{ player.username }} x{{ player.amount }}
+			</li>
+		</ul>
+		<p v-else class="empty-state">Personne n'a de quête gratuite pour le moment.</p>
 		</p>
 	</SectionBlock>
 	<SectionBlock title="Précision pour les quêtes" :img="BGem">

@@ -35,6 +35,34 @@ a {
 	color: $text-color;
 }
 
+input {
+	border: solid 2px $border-color;
+	border-radius: 20px;
+	background-color: transparent;
+	padding: 5px;
+	color: $text-color;
+	@include hoverEffect($color);
+}
+
+details {
+	margin: 1rem auto;
+	width: var(--details-width);
+	font-size: auto;
+}
+
+summary {
+	vertical-align: middle;
+	cursor: pointer;
+	margin: 1rem auto;
+	border: solid 1px $border-color;
+	border-radius: 10px 10px 3px 3px;
+	background-color: $color;
+	padding: 5px 10px;
+	width: 50%;
+	color: $text-color;
+	@include hoverEffect($color);
+}
+
 .nav {
 	position: var(--nav-position);
 	top: 0;
@@ -173,6 +201,23 @@ section {
 	}
 }
 
+.roles_table {
+	margin: 0;
+	border: 2px solid $border-color;
+	border-radius: 10px;
+	border-collapse: collapse;
+	padding: 1rem 0 0 0;
+	width: 100%;
+	overflow: hidden;
+	text-align: center;
+
+	th,
+	td {
+		border: 1px solid $border-color;
+		padding: 0.5rem;
+	}
+}
+
 .table {
 	margin: 1rem auto;
 	border: 2px solid $border-color;
@@ -220,7 +265,8 @@ section {
 	}
 }
 
-.items {
+.items,
+.search-btn {
 	cursor: pointer;
 	margin-inline: 3px;
 	border: solid 1px $border-color;
@@ -270,4 +316,31 @@ section {
 	width: 20px;
 	height: 20px;
 	color: white;
+}
+
+.center {
+	text-align: center;
+}
+
+.profile-img {
+	border-radius: 20px;
+	width: auto;
+}
+
+.skin {
+	margin-inline: auto;
+	border-radius: 20px;
+	width: 50%;
+	height: auto;
+}
+
+.role {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.img-role {
+	width: 25px;
 }

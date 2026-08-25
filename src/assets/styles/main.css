@@ -2,6 +2,7 @@
   --nav-position: fixed;
   --section-width: 100%;
   --section-margin: 0;
+  --details-width: 75%;
 }
 
 @media screen and (min-width: 767px) and (max-width: 1023px) {
@@ -9,6 +10,7 @@
     --nav-position: sticky;
     --section-width: 90%;
     --section-margin: 1rem;
+    --details-width: 65%;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -16,6 +18,7 @@
     --nav-position: sticky;
     --section-width: 75%;
     --section-margin: 2.5rem;
+    --details-width: 50%;
   }
 }
 html {
@@ -43,6 +46,40 @@ h3 {
 
 a {
   color: #ffffff;
+}
+
+input {
+  border: solid 2px #100026;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px;
+  color: #ffffff;
+  transition: filter 250ms ease;
+}
+input:hover {
+  filter: drop-shadow(0 0 5px #400099);
+}
+
+details {
+  margin: 1rem auto;
+  width: var(--details-width);
+  font-size: auto;
+}
+
+summary {
+  vertical-align: middle;
+  cursor: pointer;
+  margin: 1rem auto;
+  border: solid 1px #100026;
+  border-radius: 10px 10px 3px 3px;
+  background-color: #400099;
+  padding: 5px 10px;
+  width: 50%;
+  color: #ffffff;
+  transition: filter 250ms ease;
+}
+summary:hover {
+  filter: drop-shadow(0 0 5px #400099);
 }
 
 .nav {
@@ -161,6 +198,22 @@ section p {
   margin: auto var(--section-margin);
 }
 
+.roles_table {
+  margin: 0;
+  border: 2px solid #100026;
+  border-radius: 10px;
+  border-collapse: collapse;
+  padding: 1rem 0 0 0;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.roles_table th,
+.roles_table td {
+  border: 1px solid #100026;
+  padding: 0.5rem;
+}
+
 .table {
   margin: 1rem auto;
   border: 2px solid #100026;
@@ -201,7 +254,8 @@ section p {
   border-top: none;
 }
 
-.items {
+.items,
+.search-btn {
   cursor: pointer;
   margin-inline: 3px;
   border: solid 1px #100026;
@@ -211,7 +265,8 @@ section p {
   color: #ffffff;
   transition: filter 250ms ease;
 }
-.items:hover {
+.items:hover,
+.search-btn:hover {
   filter: drop-shadow(0 0 5px #400099);
 }
 
@@ -255,6 +310,33 @@ section p {
   width: 20px;
   height: 20px;
   color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+.profile-img {
+  border-radius: 20px;
+  width: auto;
+}
+
+.skin {
+  margin-inline: auto;
+  border-radius: 20px;
+  width: 50%;
+  height: auto;
+}
+
+.role {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.img-role {
+  width: 25px;
 }
 
 /*# sourceMappingURL=main.css.map */
