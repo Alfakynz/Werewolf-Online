@@ -277,6 +277,10 @@ section {
 	@include hoverEffect($color);
 }
 
+.items {
+	padding: 5px 7px;
+}
+
 .img,
 .bimg {
 	vertical-align: middle;

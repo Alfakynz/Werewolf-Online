@@ -18,7 +18,7 @@ import Link from '@/components/common/Link.vue'
 			ou l'autre loup est le loup junior, il faut tuer le couple du loup junior pendant que celui ci se venge sur
 			le couple de l'autre loup.
 			<br />
-			Si il reste des loups la journée (car pas de junior ou couple de loup), ils disent qui ils sont, il faut les
+			S'il reste des loups la journée (car pas de junior ou couple de loup), ils disent qui ils sont, il faut les
 			tuer rapidement (m signifie me et si quelqu'un est voter, c'est un loup).
 			<br />
 			Si vous êtes villageois, ne faite rien la nuit, ce n'est pas nécessaire. Si nécessaire, avec le prêtre ou le
@@ -35,7 +35,8 @@ import Link from '@/components/common/Link.vue'
 	<SectionBlock title="Développeurs">
 		<p>
 			Le site du clan a été développé par le sous-chef <Link to="https://github.com/Alfakynz">Valtintin</Link> qui
-			est maintenant aidé par la meilleure sous-cheffe : <Link to="https://github.com/Firelack">Firelack</Link>.
+			est maintenant aidé par la <b>MEILLEURE</b> sous-cheffe : <Link to="https://github.com/Firelack">Firelack
+			</Link>.
 		</p>
 	</SectionBlock>
 	<SectionBlock title="Droits d'auteurs">
